@@ -27,8 +27,8 @@
   <meta name="twitter:image" content="https://skepagent.com/og-image.png">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css">
-  <script src="/app.js" defer></script>
+  <link rel="stylesheet" href="/styles.css?v=20261009-2">
+  <script src="/app.js?v=20261009-2" defer></script>
 
   <script type="application/ld+json">
   {
@@ -64,9 +64,14 @@
         <a href="#quickstart" data-i18n="nav.quickstart">Quickstart</a>
       </nav>
       <div class="nav-actions">
-        <div class="lang-switch" role="group" aria-label="Language" data-i18n="lang.switcherLabel" data-i18n-attr="aria-label">
-          <button type="button" class="lang-btn" data-lang="en" lang="en" aria-pressed="true">EN</button><span class="lang-sep" aria-hidden="true">|</span><button type="button" class="lang-btn" data-lang="zh" lang="zh-CN" aria-pressed="false">中文</button>
-        </div>
+        <label class="lang-switch">
+          <span class="sr-only" data-i18n="lang.switcherLabel">Language</span>
+          <svg class="i lang-globe" aria-hidden="true"><use href="#i-globe"/></svg>
+          <select id="lang-select" class="lang-select" aria-label="Language" data-i18n="lang.switcherLabel" data-i18n-attr="aria-label">
+            <option value="en" lang="en">EN</option>
+            <option value="zh" lang="zh-CN">中文</option>
+          </select>
+        </label>
         <button class="btn btn-ghost btn-sm copy-btn mono nav-install" type="button" data-copy="npm install -g @skepagent/skep" aria-label="Copy install command" data-i18n="nav.installLabel" data-i18n-attr="aria-label">
           <span>npm i -g @skepagent/skep</span><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg>
         </button>
@@ -198,21 +203,21 @@
         </header>
 
         <figure class="hive-workflow" aria-labelledby="hive-caption">
-          <ol class="hive-flow" role="list">
-            <li class="card hive-node hive-node--human">
+          <div class="hive-flow">
+            <div class="card hive-node hive-node--human">
               <span class="hive-step mono" data-i18n="hive.step1.label">01 · Human</span>
               <span class="hive-badge"><svg class="i hive-icon" aria-hidden="true" focusable="false"><use href="#i-human"/></svg></span>
               <h3 data-i18n="hive.step1.title">You set the goal</h3>
               <p data-i18n="hive.step1.body">Describe the task and approve the plan before execution.</p>
-            </li>
-            <li class="card hive-node hive-node--skep">
+            </div>
+            <div class="card hive-node hive-node--skep">
               <span class="hive-step mono" data-i18n="hive.step2.label">02 · Skep</span>
               <span class="hive-badge"><svg class="hive-logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#logo"/></svg><svg class="i hive-bee" aria-hidden="true" focusable="false"><use href="#i-bee"/></svg></span>
               <h3 data-i18n="hive.step2.title">Skep coordinates</h3>
               <p data-i18n="hive.step2.body">Use the CLI to guide work; per-device daemons enforce the protocol.</p>
               <p class="hive-meta mono" data-i18n="hive.step2.badge">CLI + per-device daemons</p>
-            </li>
-            <li class="card hive-node hive-node--devices">
+            </div>
+            <div class="card hive-node hive-node--devices">
               <span class="hive-step mono" data-i18n="hive.step3.label">03 · Local agents</span>
               <h3 data-i18n="hive.step3.title">Agents work locally</h3>
               <p data-i18n="hive.step3.body">Agents run in local worktrees. Each device keeps its own provider credentials.</p>
@@ -221,22 +226,22 @@
                 <li class="hive-device"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-term"/></svg><span data-i18n="hive.device.gpu">GPU workstation</span></li>
                 <li class="hive-device"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-server"/></svg><span data-i18n="hive.device.server">Always-on server</span></li>
               </ul>
-            </li>
-            <li class="card hive-node hive-node--blackboard">
+            </div>
+            <div class="card hive-node hive-node--blackboard">
               <span class="hive-step mono" data-i18n="hive.step4.label">04 · Shared event log</span>
               <span class="hive-badge"><svg class="i hive-icon" aria-hidden="true" focusable="false"><use href="#i-signed-log"/></svg></span>
               <h3 data-i18n="hive.step4.title">Signed git records the handoff</h3>
               <p data-i18n="hive.step4.body">Daemons publish SSH-signed events to the blackboard: plans, claims, reviews, and delivery.</p>
               <p class="hive-meta mono" data-i18n="hive.step4.badge">SSH-signed</p>
-            </li>
-            <li class="card hive-node hive-node--merge">
+            </div>
+            <div class="card hive-node hive-node--merge">
               <span class="hive-step mono" data-i18n="hive.step5.label">05 · Human merge</span>
               <span class="hive-badge"><svg class="i hive-icon" aria-hidden="true" focusable="false"><use href="#i-human"/></svg><svg class="i hive-icon" aria-hidden="true" focusable="false"><use href="#i-merge"/></svg></span>
               <h3 data-i18n="hive.step5.title">You review and merge</h3>
               <p data-i18n="hive.step5.body">Inspect the code, checks, and stacked pull requests. You decide what merges.</p>
               <p class="hive-meta" data-i18n="hive.step5.badge">Never auto-merges</p>
-            </li>
-          </ol>
+            </div>
+          </div>
           <figcaption class="hive-caption" id="hive-caption" data-i18n="hive.caption">A conceptual workflow, not a network map. Devices sync with the git blackboard throughout the work. Code and pull requests live in the code repository; coordination events live in the blackboard.</figcaption>
         </figure>
         <p class="hive-trust-note" data-i18n="hive.note">Signed events make the handoff auditable. They do not replace code review.</p>
@@ -457,6 +462,7 @@ skep status</pre>
       <path d="M16 2 28.1 9v14L16 30 3.9 23V9z" fill="none" stroke="#06B6D4" stroke-width="2"/>
       <path d="M16 9.5 21.6 12.75v6.5L16 22.5l-5.6-3.25v-6.5z" fill="#06B6D4" opacity=".9"/>
     </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
     <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
     <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>

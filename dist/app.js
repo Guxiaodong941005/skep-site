@@ -10,6 +10,7 @@
   const LANGS = { en: "en", zh: "zh-CN" };
   const STORE_KEY = "skep.lang";
   const dicts = {};
+  let langSelect = null;
   let dict = {};
   let currentLang = "en";
 
@@ -55,9 +56,7 @@
     dict = dicts[lang] || {};
     nodes.forEach((n) => fill(n, t(n.el.dataset.i18n, n.original)));
     document.documentElement.lang = LANGS[lang];
-    document.querySelectorAll("[data-lang]").forEach((b) => {
-      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
-    });
+    if (langSelect) langSelect.value = lang;
   }
 
   async function loadDict(lang) {
@@ -70,7 +69,9 @@
     return d;
   }
 
+  let langRequest = 0;
   async function setLang(lang, persist) {
+    const request = ++langRequest;
     if (!(lang in LANGS)) lang = "en";
     if (persist) { try { localStorage.setItem(STORE_KEY, lang); } catch { /* storage unavailable */ } }
     try {
@@ -79,12 +80,14 @@
     } catch {
       lang = "en"; // dictionary missing or unreadable: stay in English
     }
+    if (request !== langRequest) return; // a newer selection superseded this one
     applyLang(lang);
   }
 
-  document.querySelectorAll("[data-lang]").forEach((b) => {
-    b.addEventListener("click", () => { if (b.dataset.lang !== currentLang) setLang(b.dataset.lang, true); });
-  });
+  langSelect = document.getElementById("lang-select");
+  if (langSelect) {
+    langSelect.addEventListener("change", () => setLang(langSelect.value, true));
+  }
 
   let saved = null;
   try { saved = localStorage.getItem(STORE_KEY); } catch { saved = null; }
