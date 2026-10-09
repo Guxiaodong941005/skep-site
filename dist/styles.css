@@ -445,3 +445,60 @@ h1 .grad,
   .reveal { opacity: 1; transform: none; transition: none; }
   .card:hover, .feature:hover, .hive-node:hover, .step:hover, .btn-primary:hover { transform: none; }
 }
+
+/* ===== Mobile nav: keep #lang-select fully tappable ===== */
+.nav-actions {
+  position: relative;
+  z-index: 60;
+  align-items: center;
+  flex: none;
+  flex-wrap: nowrap;
+  gap: 6px;
+  min-width: 0;
+}
+.lang-switch {
+  position: relative;
+  z-index: 70;
+  flex: 0 0 auto;
+  isolation: isolate;
+}
+.lang-select {
+  position: relative;
+  z-index: 71;
+  min-width: 4.75rem;
+  max-width: 7.5rem;
+  /* keep room for globe + chevron; 16px font avoids iOS zoom */
+  padding: 0 28px 0 30px !important;
+  height: 34px !important;
+  font-size: 16px !important;
+  line-height: 34px !important;
+  touch-action: manipulation;
+  pointer-events: auto;
+}
+.lang-globe { z-index: 72; }
+.nav-github {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 50;
+  min-width: 34px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.nav-github-label { display: inline; }
+@media (max-width: 520px) {
+  .nav-inner { gap: 8px; height: 56px; }
+  .nav-actions { gap: 4px; }
+  .nav-github-label { display: none !important; }
+  .nav-github .stars {
+    border-left: 0;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .brand .badge { display: none; }
+  .brand-name { font-size: 1rem; }
+}
+@media (max-width: 360px) {
+  .nav-github .stars { display: none !important; }
+  .lang-select { min-width: 4.25rem; padding-right: 24px !important; }
+}
+
