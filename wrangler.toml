@@ -1,0 +1,5 @@
+# Cloudflare Pages config for skepagent.com.
+# The site is hand-written static files in ./dist (no build step).
+name = "skep-site"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = "dist"

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="0%" r="75%">
+      <stop offset="0" stop-color="#06B6D4" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#06B6D4" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1F2633" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="fade" cx="50%" cy="0%" r="90%">
+      <stop offset="0" stop-color="#fff" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="m"><rect width="1200" height="630" fill="url(#fade)"/></mask>
+  </defs>
+  <rect width="1200" height="630" fill="#080A0E"/>
+  <rect width="1200" height="630" fill="url(#grid)" mask="url(#m)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <g transform="translate(80 78)">
+    <path d="M24 3 42.2 13.5v21L24 45 5.8 34.5v-21z" fill="none" stroke="#06B6D4" stroke-width="3"/>
+    <path d="M24 14.25 32.4 19.1v9.8L24 33.75l-8.4-4.85v-9.8z" fill="#06B6D4"/>
+    <text x="62" y="35" font-family="JetBrains Mono, Fira Code, Menlo, monospace" font-size="34" font-weight="700" fill="#F8FAFC">skep</text>
+    <rect x="160" y="10" width="92" height="30" rx="6" fill="#0F131A" stroke="#1F2633"/>
+    <text x="206" y="31" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="16" fill="#94A3B8">v0.1.1</text>
+  </g>
+
+  <text font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-weight="700" letter-spacing="-1.5">
+    <tspan x="80" y="218" font-size="60" fill="#F8FAFC">Multi-agent coding across devices.</tspan>
+    <tspan x="80" y="290" font-size="60" fill="#06B6D4">Coordinated over signed git.</tspan>
+  </text>
+
+  <g transform="translate(80 344)">
+    <rect width="1040" height="206" rx="10" fill="#0F131A" stroke="#1F2633"/>
+    <path d="M0 10a10 10 0 0 1 10-10h1020a10 10 0 0 1 10 10v30H0z" fill="#0C1016"/>
+    <line x1="0" y1="40" x2="1040" y2="40" stroke="#1F2633"/>
+    <circle cx="22" cy="20" r="6" fill="#EF4444"/>
+    <circle cx="42" cy="20" r="6" fill="#F59E0B"/>
+    <circle cx="62" cy="20" r="6" fill="#10B981"/>
+    <g font-family="JetBrains Mono, Fira Code, Menlo, monospace" font-size="21" xml:space="preserve">
+      <text x="28" y="84"><tspan fill="#F8FAFC">$ npm i -g @skepagent/skep</tspan></text>
+      <text x="28" y="122"><tspan fill="#F8FAFC">$ skep session start</tspan><tspan fill="#64748B">   # join code: 4821-0937-5520</tspan></text>
+      <text x="28" y="160"><tspan fill="#06B6D4">9f82d1c</tspan><tspan fill="#10B981">    signed skepd@devbox</tspan><tspan fill="#94A3B8">  work.delivered T-12/I-1</tspan></text>
+      <text x="28" y="190"><tspan fill="#94A3B8">   D19: provider keys never leave the device</tspan></text>
+    </g>
+    <g fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M131 154l5 5 10-11"/>
+      <path d="M29 184l5 5 10-11"/>
+    </g>
+  </g>
+
+  <text x="1120" y="592" text-anchor="end" font-family="JetBrains Mono, Menlo, monospace" font-size="20" fill="#64748B">skepagent.com · MIT</text>
+</svg>

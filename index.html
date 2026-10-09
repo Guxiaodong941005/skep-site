@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skep — Decentralized Multi-Agent Coding over Signed Git</title>
+  <meta name="description" content="Coordinate AI coding agents across devices using an SSH-signed git blackboard and real-time TUI sessions. Open source CLI and daemon (@skepagent/skep).">
+  <meta name="keywords" content="ai agents, coding agent, git blackboard, multi-agent collaboration, skep, skepd, ssh-signed, autonomous coding">
+  <link rel="canonical" href="https://skepagent.com/">
+  <meta name="theme-color" content="#080A0E">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Skep">
+  <meta property="og:url" content="https://skepagent.com/">
+  <meta property="og:title" content="Skep — Multi-Device AI Coding Agent Collaboration">
+  <meta property="og:description" content="Decentralized AI agent collaboration over signed git blackboards. Local API keys stay local.">
+  <meta property="og:image" content="https://skepagent.com/og-image.svg">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Skep: multi-agent coding across devices, coordinated over signed git.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Skep — Multi-Device AI Coding Agent Collaboration">
+  <meta name="twitter:description" content="Decentralized AI agent collaboration over signed git blackboards.">
+  <meta name="twitter:image" content="https://skepagent.com/og-image.svg">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Skep",
+    "description": "Cross-device, decentralized collaboration for AI coding agents over a signed git blackboard.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "macOS, Linux",
+    "softwareVersion": "0.1.1",
+    "license": "https://opensource.org/licenses/MIT",
+    "url": "https://skepagent.com/",
+    "codeRepository": "https://github.com/Guxiaodong941005/skepAgent",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Skep home">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><use href="#logo"/></svg>
+        <span class="brand-name">skep</span>
+        <span class="badge mono">v0.1.1</span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#features">Features</a>
+        <a href="#security">Security</a>
+        <a href="#quickstart">Quickstart</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm copy-btn mono nav-install" type="button" data-copy="npm install -g @skepagent/skep" aria-label="Copy install command">
+          <span>npm i -g @skepagent/skep</span><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg>
+        </button>
+        <a class="btn btn-ghost btn-sm" href="https://github.com/Guxiaodong941005/skepAgent" rel="noopener">
+          <svg class="i" aria-hidden="true"><use href="#i-github"/></svg>
+          <span>GitHub</span>
+          <span class="stars mono" data-stars hidden><svg class="i i-xs" aria-hidden="true"><use href="#i-star"/></svg><span data-stars-count></span></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="grid-bg" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <p class="eyebrow mono"><span class="pill pill-amber">Prerelease v0.1.1</span><span class="dot-sep">·</span>Open source MIT</p>
+        <h1>Multi-agent coding across devices.<br><span class="accent">Coordinated over signed git.</span></h1>
+        <p class="lead">Run AI coding agents on your laptop, your GPU rig and an always-on server. Skep gives them an SSH-signed git blackboard for asynchronous handoffs and a live session TUI for real-time work, and it never moves provider credentials between machines.</p>
+
+        <div class="cta-row">
+          <button class="code-pill copy-btn" type="button" data-copy="npm install -g @skepagent/skep" aria-label="Copy install command: npm install -g @skepagent/skep">
+            <span class="mono"><span class="prompt">$</span> npm i -g @skepagent/skep</span>
+            <svg class="i" aria-hidden="true"><use href="#i-copy"/></svg>
+          </button>
+          <a class="btn btn-secondary" href="https://github.com/Guxiaodong941005/skepAgent" rel="noopener">View on GitHub <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="fineprint mono">Node.js ≥ 22.12 · macOS &amp; Linux · bins: <code>skep</code>, <code>skepd</code></p>
+
+        <!-- Terminal mockup -->
+        <div class="terminal hero-terminal" data-tabs>
+          <div class="term-bar">
+            <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="tabs" role="tablist" aria-label="Terminal demos">
+              <button role="tab" id="ht-1" aria-controls="hp-1" aria-selected="true" tabindex="0">1. Local Agent <span class="mono dim">(skep)</span></button>
+              <button role="tab" id="ht-2" aria-controls="hp-2" aria-selected="false" tabindex="-1">2. Multi-Device Session</button>
+              <button role="tab" id="ht-3" aria-controls="hp-3" aria-selected="false" tabindex="-1">3. Git Blackboard</button>
+            </div>
+          </div>
+
+          <div class="term-body" role="tabpanel" id="hp-1" aria-labelledby="ht-1" tabindex="0">
+<pre class="mono"><span class="c-mut"># inside any git checkout</span>
+<span class="c-cyan">~/code/api</span> <span class="c-mut">(main)</span> <span class="c-pri">$</span> skep
+<span class="c-em">✓</span> found agent CLI: <span class="c-pri">claude</span> <span class="c-mut">(fallbacks: codex, pi)</span>
+<span class="c-em">✓</span> using this device's own login <span class="c-mut">— nothing is copied (D19)</span>
+<span class="c-cyan">→</span> opening claude with Skep's guide as the first message…
+
+<span class="c-mut">┌─ claude ─────────────────────────────────────────────┐</span>
+<span class="c-mut">│</span> <span class="c-pri">&gt;</span> add rate limiting to /v1/login                      <span class="c-mut">│</span>
+<span class="c-mut">│</span>   <span class="c-mut">The agent keeps its own TUI. Skep stays out of</span>     <span class="c-mut">│</span>
+<span class="c-mut">│</span>   <span class="c-mut">the way and never approves tool use for you.</span>       <span class="c-mut">│</span>
+<span class="c-mut">└──────────────────────────────────────────────────────┘</span></pre>
+          </div>
+
+          <div class="term-body" role="tabpanel" id="hp-2" aria-labelledby="ht-2" tabindex="0" hidden>
+<pre class="mono"><span class="c-mut"># workstation (master)</span>
+<span class="c-cyan">devbox</span> <span class="c-pri">$</span> skep session start
+<span class="c-em">✓</span> session master listening on <span class="c-cyan">192.168.1.20:7419</span>
+  join code: <span class="c-amb">4821-0937-5520</span>
+
+<span class="c-mut"># laptop (sub)</span>
+<span class="c-cyan">macbook</span> <span class="c-pri">$</span> skep session join --code 4821-0937-5520 --host 192.168.1.20:7419 --ui
+<span class="c-em">✓</span> joined as <span class="c-pri">macbook</span> <span class="c-mut">(role: coding)</span>
+
+<span class="c-cyan">devbox</span> <span class="c-pri">$</span> skep session intent "split auth middleware into its own module"
+  item <span class="c-cyan">I-1</span> → macbook  <span class="c-mut">agent: running · output tail redacted</span>
+  item <span class="c-cyan">I-1</span> <span class="c-em">done</span>  <span class="c-mut">summary sent to master; full transcript stays on macbook</span></pre>
+          </div>
+
+          <div class="term-body" role="tabpanel" id="hp-3" aria-labelledby="ht-3" tabindex="0" hidden>
+<pre class="mono"><span class="c-mut"># the blackboard is a plain git repo; main is a signed, linear event log</span>
+<span class="c-pri">$</span> git -C ~/.skep/blackboard log --show-signature --oneline -5
+<span class="c-cyan">9f82d1c</span> <span class="c-em">Good "git" signature for skepd@devbox</span>   work.delivered   T-12/I-1 epoch 2
+<span class="c-cyan">3ab04e7</span> <span class="c-em">Good "git" signature for skepd@macbook</span>  review.submitted T-12/I-1
+<span class="c-cyan">c71e9a0</span> <span class="c-em">Good "git" signature for skepd@devbox</span>   lease.claimed    T-12/I-1 epoch 2
+<span class="c-cyan">58d2f11</span> <span class="c-em">Good "git" signature for human@owner</span>    plan.approved    T-12
+<span class="c-cyan">0be6a44</span> <span class="c-em">Good "git" signature for skepd@devbox</span>   plan.proposed    T-12
+
+<span class="c-pri">$</span> skep status
+  T-12  <span class="c-em">verified</span>  1 item · stacked PR ready for <span class="c-pri">your</span> merge <span class="c-mut">(Skep never auto-merges)</span></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="how-it-works">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="kicker mono">How it works</p>
+          <h2>Three steps, no infrastructure.</h2>
+          <p class="sub">State lives where your code already lives: in git. Any host works.</p>
+        </header>
+        <ol class="steps">
+          <li class="card step">
+            <span class="step-n mono">01</span>
+            <h3>Install &amp; launch</h3>
+            <p class="tag">Zero infrastructure needed.</p>
+            <p>Install <code>@skepagent/skep</code> from npm. Run bare <code>skep</code> in any repo to open your local agent CLI (claude, codex or pi). Run <code>skepd</code> as a per-device service when you want the blackboard.</p>
+          </li>
+          <li class="card step">
+            <span class="step-n mono">02</span>
+            <h3>Decentralized git blackboard</h3>
+            <p class="tag">State lives where code lives.</p>
+            <p>Every state change is one JSON event in one SSH-signed commit on the blackboard repo's <code>main</code>. Each device replays the log with a deterministic reducer, so devices at the same tip agree on who owns what without ever talking to each other.</p>
+          </li>
+          <li class="card step">
+            <span class="step-n mono">03</span>
+            <h3>Live &amp; async pairing</h3>
+            <p class="tag">Work locally, hand off globally.</p>
+            <p>Use <code>skep session start</code> / <code>join</code> for an in-memory session across your LAN, or let <code>skepd</code> plan, claim and execute work in the background and publish it as stacked pull requests.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="section section-alt" id="architecture">
+      <div class="wrap arch">
+        <header class="section-head">
+          <p class="kicker mono">Architecture</p>
+          <h2>A daemon per device. A git repo in the middle.</h2>
+          <p class="sub">The human drives <code>skep</code>. Each device runs one <code>skepd</code> that only makes outbound connections to your git remote. There is no coordinator to run or trust.</p>
+        </header>
+        <div class="arch-grid">
+          <div class="terminal arch-diagram">
+            <div class="term-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="term-title mono">architecture.txt</span></div>
+<pre class="term-body mono" aria-label="Architecture diagram"> <span class="c-pri">human</span> ──► <span class="c-cyan">skep</span> (CLI) ──unix socket──► <span class="c-cyan">skepd</span> (one per device)
+                                         ├─ sync: fetch → <span class="c-pri">reducer</span> → state
+                                         ├─ publisher: single writer, <span class="c-em">signed</span>
+                                         ├─ heartbeats: hb/&lt;agent&gt; refs
+                                         └─ slots: plan · review · claim · execute
+                                               └─ agent CLI in a worktree
+                                                     └─ checks → push → stacked PR
+
+ <span class="c-amb">blackboard repo</span> (main = signed log) ◄──► every device's skepd
+ <span class="c-amb">code repo</span> (branches, PRs)           ◄──► executing devices</pre>
+          </div>
+          <ul class="arch-points">
+            <li><strong>Deterministic code enforces the protocol.</strong> Models only produce content: plans, reviews and code. Daemons validate, authorize, sequence, test, sign and publish.</li>
+            <li><strong>No inbound connectivity (D18).</strong> Blackboard devices never connect to each other. No mesh VPN or fixed IP is required.</li>
+            <li><strong>Human holds the gates.</strong> You create tasks, approve plans, revoke leases, decide escalations and merge.</li>
+            <li><strong>Single-agent fast path by default.</strong> Team mode with several items, peer review and stacked PRs only when the task needs it.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="kicker mono">Features</p>
+          <h2>Built for agents that don't share a machine.</h2>
+        </header>
+        <div class="features">
+          <article class="card feature">
+            <svg class="fi" aria-hidden="true"><use href="#i-git"/></svg>
+            <h3>Signed git blackboard</h3>
+            <p>Commits as event logs. Every task, plan, lease and delivery is an SSH-signed event, verified against each device's local <code>allowed_signers</code>. Forged or unsigned commits become no-ops and raise an alarm.</p>
+          </article>
+          <article class="card feature">
+            <svg class="fi" aria-hidden="true"><use href="#i-layers"/></svg>
+            <h3>Dual-mode execution</h3>
+            <p>Use bare <code>skep</code> to open your local agent interactively. Use the <code>skepd</code> daemon for background plan, review, claim and execute slots across devices.</p>
+          </article>
+          <article class="card feature">
+            <svg class="fi" aria-hidden="true"><use href="#i-term"/></svg>
+            <h3>In-memory session TUI</h3>
+            <p>Start a session on your workstation, join from your laptop with a 12-digit code, and watch peers, items and agent state in <code>skep ui</code>.</p>
+          </article>
+          <article class="card feature">
+            <svg class="fi" aria-hidden="true"><use href="#i-key"/></svg>
+            <h3>D19 credential isolation</h3>
+            <p>Zero secret sharing. Each device's agent CLI uses its own local login. Keys never touch git or the wire, not even as a hash or a label.</p>
+          </article>
+          <article class="card feature">
+            <svg class="fi" aria-hidden="true"><use href="#i-lock"/></svg>
+            <h3>Epoch-fenced leases</h3>
+            <p>A claim bumps the work item's epoch, and every downstream event and branch is fenced by it. A laptop that wakes from sleep after its lease was revoked can never deliver stale work.</p>
+          </article>
+          <article class="card feature">
+            <svg class="fi" aria-hidden="true"><use href="#i-bolt"/></svg>
+            <h3>Native CLI tooling</h3>
+            <p>A pure Node.js + TypeScript CLI with four runtime dependencies: <code>commander</code>, <code>zod</code>, <code>smol-toml</code> and <code>yaml</code>. It starts fast and stays small.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section class="section section-alt" id="security">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="kicker mono">Security</p>
+          <h2>Security by architecture, not policy.</h2>
+        </header>
+        <div class="security">
+          <blockquote class="d19 card">
+            <p class="d19-label mono"><span class="pill pill-em">Decision D19</span></p>
+            <p class="d19-quote">“Skep never transports, stores, syncs or brokers provider credentials, API keys or provider configurations between devices, in any form: not as plaintext, not as ciphertext, not as a hash, and not as a label.”</p>
+            <div class="d19-devices" aria-label="Each device uses its own credentials">
+              <div class="dev"><span class="mono c-cyan">macbook</span><span class="mono dim">claude · local login</span></div>
+              <div class="dev-link mono" aria-hidden="true">signed events only<br>⇄</div>
+              <div class="dev"><span class="mono c-cyan">devbox</span><span class="mono dim">codex · local login</span></div>
+            </div>
+          </blockquote>
+          <ul class="sec-points">
+            <li class="card">
+              <h3><svg class="i c-em" aria-hidden="true"><use href="#i-check"/></svg>SSH-signed event chain</h3>
+              <p>Every blackboard commit is signed with an SSH key and checked against a trust root that each device installs locally. Fingerprints are compared out of band at <code>skep init</code>.</p>
+            </li>
+            <li class="card">
+              <h3><svg class="i c-em" aria-hidden="true"><use href="#i-check"/></svg>Strict no-credential sync</h3>
+              <p>Other agent tools sync config and keys across devices. Skep explicitly forbids it. Machine A uses its Claude login and machine B uses its Codex login, and Skep never reads or records either.</p>
+            </li>
+            <li class="card">
+              <h3><svg class="i c-em" aria-hidden="true"><use href="#i-check"/></svg>Auditable history</h3>
+              <p>When an agent makes a mistake, <code>git log</code> on the blackboard shows exactly which device, key and event made each step. The genesis commit is human-signed.</p>
+            </li>
+            <li class="card">
+              <h3><svg class="i c-em" aria-hidden="true"><use href="#i-check"/></svg>No auto-merge, ever</h3>
+              <p>Plan approval, lease revocation, escalation decisions and merges stay with you. In session mode the master gets a redacted summary, and the full transcript stays on the device that did the work.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quickstart -->
+    <section class="section" id="quickstart">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="kicker mono">Quickstart</p>
+          <h2>Up and running in 60 seconds.</h2>
+          <p class="sub">Needs Node.js ≥ 22.12, git ≥ 2.34, OpenSSH ≥ 8.9, and an agent CLI that is already logged in on each device.</p>
+        </header>
+
+        <div class="terminal qs" data-tabs>
+          <div class="term-bar">
+            <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="tabs" role="tablist" aria-label="Quickstart steps">
+              <button role="tab" id="qt-1" aria-controls="qp-1" aria-selected="true" tabindex="0">Install</button>
+              <button role="tab" id="qt-2" aria-controls="qp-2" aria-selected="false" tabindex="-1">Local Run</button>
+              <button role="tab" id="qt-3" aria-controls="qp-3" aria-selected="false" tabindex="-1">Session Mode</button>
+              <button role="tab" id="qt-4" aria-controls="qp-4" aria-selected="false" tabindex="-1">Daemon</button>
+            </div>
+          </div>
+
+          <div class="term-body qs-panel" role="tabpanel" id="qp-1" aria-labelledby="qt-1" tabindex="0">
+            <button class="copy-btn copy-corner" type="button" data-copy-target="qc-1" aria-label="Copy commands"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+<pre class="mono" id="qc-1"><span class="c-mut"># 1. Install globally (bins: skep, skepd)</span>
+npm install -g @skepagent/skep</pre>
+          </div>
+          <div class="term-body qs-panel" role="tabpanel" id="qp-2" aria-labelledby="qt-2" tabindex="0" hidden>
+            <button class="copy-btn copy-corner" type="button" data-copy-target="qc-2" aria-label="Copy commands"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+<pre class="mono" id="qc-2"><span class="c-mut"># 2. Launch your local agent (claude, else codex, else pi)</span>
+skep
+<span class="c-mut"># or pick one explicitly</span>
+skep tui --agent codex</pre>
+          </div>
+          <div class="term-body qs-panel" role="tabpanel" id="qp-3" aria-labelledby="qt-3" tabindex="0" hidden>
+            <button class="copy-btn copy-corner" type="button" data-copy-target="qc-3" aria-label="Copy commands"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+<pre class="mono" id="qc-3"><span class="c-mut"># 3. Start a multi-device live session (prints a join code)</span>
+skep session start
+skep ui
+
+<span class="c-mut"># 4. Join from a second device on the same network</span>
+skep session join --code &lt;join-code&gt; --host &lt;master-ip&gt;:7419 --ui
+
+<span class="c-mut"># send work to the session</span>
+skep session intent "what should be done"</pre>
+          </div>
+          <div class="term-body qs-panel" role="tabpanel" id="qp-4" aria-labelledby="qt-4" tabindex="0" hidden>
+            <button class="copy-btn copy-corner" type="button" data-copy-target="qc-4" aria-label="Copy commands"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+<pre class="mono" id="qc-4"><span class="c-mut"># 5. Blackboard mode: one empty private git repo + skepd on every device</span>
+skep init                 <span class="c-mut"># per device: daemon key + allowed_signers line</span>
+skep init --genesis --human-key &lt;path&gt;   <span class="c-mut"># controller only, once</span>
+skepd                     <span class="c-mut"># run as a service (systemd / launchd)</span>
+skep doctor
+
+skep task new "…" --repo &lt;allowlist-name&gt; --owner &lt;agent&gt;
+skep plan approve &lt;task&gt;
+skep status</pre>
+          </div>
+        </div>
+        <p class="fineprint qs-note">Full trust setup, revoke and re-genesis steps are in the <a href="https://github.com/Guxiaodong941005/skepAgent/blob/main/docs/RUNBOOK.md" rel="noopener">runbook</a>.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta">
+      <div class="grid-bg grid-bg-cta" aria-hidden="true"></div>
+      <div class="wrap cta-inner">
+        <h2>Ready to coordinate your AI coding swarm?</h2>
+        <p class="sub">Skep is free, MIT-licensed and early. Expect breaking changes while it is 0.x, and send feedback through GitHub.</p>
+        <div class="cta-row cta-center">
+          <a class="btn btn-primary" href="https://www.npmjs.com/package/@skepagent/skep" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-npm"/></svg>Install via npm (@skepagent/skep)</a>
+          <a class="btn btn-secondary" href="https://github.com/Guxiaodong941005/skepAgent#readme" rel="noopener">Read the documentation on GitHub <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <a class="brand" href="#top"><svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><use href="#logo"/></svg><span class="brand-name">skep</span></a>
+        <p class="fineprint">© 2026 Skep Contributors. Open source under the <a href="https://github.com/Guxiaodong941005/skepAgent/blob/main/LICENSE" rel="noopener">MIT License</a>.</p>
+      </div>
+      <nav class="footer-links" aria-label="Project links">
+        <a href="https://www.npmjs.com/package/@skepagent/skep" rel="noopener">npm</a>
+        <a href="https://github.com/Guxiaodong941005/skepAgent" rel="noopener">GitHub Repository</a>
+        <a href="https://github.com/Guxiaodong941005/skepAgent/issues" rel="noopener">Issues</a>
+        <a href="https://github.com/Guxiaodong941005/skepAgent/releases" rel="noopener">Releases</a>
+        <a href="https://github.com/Guxiaodong941005/skepAgent#readme" rel="noopener">Documentation</a>
+      </nav>
+      <p class="privacy mono"><svg class="i i-xs c-em" aria-hidden="true"><use href="#i-check"/></svg>No cookies. No trackers. Static on Cloudflare Pages.</p>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+  <!-- Icon sprite -->
+  <svg class="sprite" width="0" height="0" aria-hidden="true">
+    <symbol id="logo" viewBox="0 0 32 32">
+      <path d="M16 2 28.1 9v14L16 30 3.9 23V9z" fill="none" stroke="#06B6D4" stroke-width="2"/>
+      <path d="M16 9.5 21.6 12.75v6.5L16 22.5l-5.6-3.25v-6.5z" fill="#06B6D4" opacity=".9"/>
+    </symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a10.9 10.9 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></symbol>
+    <symbol id="i-npm" viewBox="0 0 24 24" fill="currentColor"><path d="M2 7h20v9h-10v1.5H8V16H2zm1.5 1.5v6h3v-4.5H8v4.5h1.5v-6zm7 0v7.5h3V14.5h3v-6zm3 1.5h1.5v3H13.5zm4-1.5v6h1.5v-4.5h1.5v4.5H22v-6z"/></symbol>
+    <symbol id="i-git" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 7v10M6 12h3a6 6 0 0 0 7 0"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+    <symbol id="i-term" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="16" rx="2"/><path d="m7 9 3 3-3 3M12.5 15H17"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3M15 8l2 2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  </svg>
+</body>
+</html>
