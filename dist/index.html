@@ -27,8 +27,11 @@
   <meta name="twitter:image" content="https://skepagent.com/og-image.png">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css?v=20261009-3">
-  <script src="/app.js?v=20261009-3" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=20261009-4">
+  <script src="/app.js?v=20261009-4" defer></script>
 
   <script type="application/ld+json">
   {
@@ -90,7 +93,7 @@
       <div class="grid-bg" aria-hidden="true"></div>
       <div class="wrap hero-inner">
         <p class="eyebrow mono"><span class="pill pill-amber" data-i18n="hero.badge">Prerelease v0.1.2</span><span class="dot-sep">·</span><span data-i18n="hero.license">Open source MIT</span></p>
-        <h1><span data-i18n="hero.titleLine1">Multi-agent coding across devices.</span><br><span class="accent" data-i18n="hero.title">Connected by live sessions.</span></h1>
+        <h1><span data-i18n="hero.titleLine1">Multi-agent coding across devices.</span><br><span class="accent" data-i18n="hero.title" class="hero-title-grad">Connected by live sessions.</span></h1>
         <p class="lead" data-i18n="hero.lead">Run AI coding agents on your laptop, your GPU rig and an always-on server. Skep gives them an SSH-signed session for asynchronous handoffs and a live session TUI for real-time work, and it never moves provider credentials between machines.</p>
 
         <div class="cta-row">
@@ -159,7 +162,7 @@
     </section>
 
     <!-- How it works -->
-    <section class="section" id="how-it-works">
+    <section class="section" id="how-it-works" class="reveal">
       <div class="wrap">
         <header class="section-head">
           <p class="kicker mono" data-i18n="howItWorks.kicker">How it works</p>
@@ -190,7 +193,7 @@
     </section>
 
     <!-- The hive -->
-    <section class="section hive" id="the-hive" aria-labelledby="hive-title">
+    <section class="section hive" id="the-hive" class="reveal" aria-labelledby="hive-title">
       <div class="hive-motif" aria-hidden="true">
         <svg class="hive-hex-field" viewBox="0 0 160 100" focusable="false"><use href="#i-hive-comb"/></svg>
       </div>
@@ -250,7 +253,7 @@
     </section>
 
     <!-- Architecture -->
-    <section class="section section-alt" id="architecture">
+    <section class="section section-alt" id="architecture" class="reveal">
       <div class="wrap arch">
         <header class="section-head">
           <p class="kicker mono" data-i18n="architecture.kicker">Architecture</p>
@@ -282,7 +285,7 @@
     </section>
 
     <!-- Features -->
-    <section class="section" id="features">
+    <section class="section" id="features" class="reveal">
       <div class="wrap">
         <header class="section-head">
           <p class="kicker mono" data-i18n="features.kicker">Features</p>
@@ -324,7 +327,7 @@
     </section>
 
     <!-- Security -->
-    <section class="section section-alt" id="security">
+    <section class="section section-alt" id="security" class="reveal">
       <div class="wrap">
         <header class="section-head">
           <p class="kicker mono" data-i18n="security.kicker">Security</p>
@@ -363,7 +366,7 @@
     </section>
 
     <!-- Quickstart -->
-    <section class="section" id="quickstart">
+    <section class="section" id="quickstart" class="reveal">
       <div class="wrap">
         <header class="section-head">
           <p class="kicker mono" data-i18n="quickstart.kicker">Quickstart</p>
