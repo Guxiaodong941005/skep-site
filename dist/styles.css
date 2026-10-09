@@ -272,8 +272,8 @@ code { font-family: var(--font-mono); font-size: 0.88em; color: var(--text-prima
 .hive-bee { width: 18px; height: 18px; vertical-align: 0; color: var(--accent-amber); }
 .hive-node--skep { border-color: #06b6d433; }
 .hive-node--skep .hive-badge { border-color: #06b6d455; }
-.hive-node--blackboard .hive-badge { color: var(--accent-emerald); border-color: #10b98155; }
-.hive-node--blackboard .hive-meta { color: var(--accent-emerald); }
+.hive-node--channel .hive-badge { color: var(--accent-emerald); border-color: #10b98155; }
+.hive-node--channel .hive-meta { color: var(--accent-emerald); }
 .hive-meta { color: var(--text-secondary); font-size: 0.8rem !important; margin-top: auto !important; }
 .hive-devices { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .hive-device { display: flex; align-items: center; gap: 8px; min-width: 0; padding: 7px 10px; font-size: 0.82rem; color: var(--text-primary); background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: 6px; }

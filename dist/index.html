@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-i18n="meta.title">Skep — Decentralized Multi-Agent Coding over Signed Git</title>
-  <meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="Coordinate AI coding agents across devices using an SSH-signed git blackboard and real-time TUI sessions. Open source CLI and daemon (@skepagent/skep).">
-  <meta name="keywords" content="ai agents, coding agent, git blackboard, multi-agent collaboration, skep, skepd, ssh-signed, autonomous coding">
+  <title data-i18n="meta.title">Skep — Multi-Device AI Coding Agents over Live Sessions</title>
+  <meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="Coordinate AI coding agents across devices with join-code sessions and a local TUI. Open source CLI (@skepagent/skep).">
+  <meta name="keywords" content="ai agents, coding agent, multi-agent collaboration, skep, session, join code, autonomous coding">
   <link rel="canonical" href="https://skepagent.com/">
   <meta name="theme-color" content="#080A0E">
   <meta name="color-scheme" content="dark">
@@ -14,31 +14,31 @@
   <meta property="og:site_name" content="Skep">
   <meta property="og:url" content="https://skepagent.com/">
   <meta property="og:title" content="Skep — Multi-Device AI Coding Agent Collaboration">
-  <meta property="og:description" content="Decentralized AI agent collaboration over signed git blackboards. Local API keys stay local.">
+  <meta property="og:description" content="Multi-device AI agent collaboration over live join-code sessions. Local API keys stay local.">
   <meta property="og:image" content="https://skepagent.com/og-image.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Skep: multi-agent coding across devices, coordinated over signed git.">
+  <meta property="og:image:alt" content="Skep: multi-agent coding across devices, connected by live sessions.">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Skep — Multi-Device AI Coding Agent Collaboration">
-  <meta name="twitter:description" content="Decentralized AI agent collaboration over signed git blackboards.">
+  <meta name="twitter:description" content="Multi-device AI agent collaboration over live join-code sessions.">
   <meta name="twitter:image" content="https://skepagent.com/og-image.png">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css?v=20261009-2">
-  <script src="/app.js?v=20261009-2" defer></script>
+  <link rel="stylesheet" href="/styles.css?v=20261009-3">
+  <script src="/app.js?v=20261009-3" defer></script>
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Skep",
-    "description": "Cross-device, decentralized collaboration for AI coding agents over a signed git blackboard.",
+    "description": "Cross-device collaboration for AI coding agents via live join-code sessions.",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "macOS, Linux",
-    "softwareVersion": "0.1.1",
+    "softwareVersion": "0.1.2",
     "license": "https://opensource.org/licenses/MIT",
     "url": "https://skepagent.com/",
     "codeRepository": "https://github.com/Guxiaodong941005/skepAgent",
@@ -54,7 +54,7 @@
       <a class="brand" href="#top" aria-label="Skep home" data-i18n="nav.homeLabel" data-i18n-attr="aria-label">
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><use href="#logo"/></svg>
         <span class="brand-name">skep</span>
-        <span class="badge mono">v0.1.1</span>
+        <span class="badge mono">v0.1.2</span>
       </a>
       <nav class="nav-links" aria-label="Sections" data-i18n="nav.sectionsLabel" data-i18n-attr="aria-label">
         <a href="#how-it-works" data-i18n="nav.howItWorks">How It Works</a>
@@ -89,9 +89,9 @@
     <section class="hero" id="top">
       <div class="grid-bg" aria-hidden="true"></div>
       <div class="wrap hero-inner">
-        <p class="eyebrow mono"><span class="pill pill-amber" data-i18n="hero.badge">Prerelease v0.1.1</span><span class="dot-sep">·</span><span data-i18n="hero.license">Open source MIT</span></p>
-        <h1><span data-i18n="hero.titleLine1">Multi-agent coding across devices.</span><br><span class="accent" data-i18n="hero.title">Coordinated over signed git.</span></h1>
-        <p class="lead" data-i18n="hero.lead">Run AI coding agents on your laptop, your GPU rig and an always-on server. Skep gives them an SSH-signed git blackboard for asynchronous handoffs and a live session TUI for real-time work, and it never moves provider credentials between machines.</p>
+        <p class="eyebrow mono"><span class="pill pill-amber" data-i18n="hero.badge">Prerelease v0.1.2</span><span class="dot-sep">·</span><span data-i18n="hero.license">Open source MIT</span></p>
+        <h1><span data-i18n="hero.titleLine1">Multi-agent coding across devices.</span><br><span class="accent" data-i18n="hero.title">Connected by live sessions.</span></h1>
+        <p class="lead" data-i18n="hero.lead">Run AI coding agents on your laptop, your GPU rig and an always-on server. Skep gives them an SSH-signed session for asynchronous handoffs and a live session TUI for real-time work, and it never moves provider credentials between machines.</p>
 
         <div class="cta-row">
           <button class="code-pill copy-btn" type="button" data-copy="npm install -g @skepagent/skep" aria-label="Copy install command: npm install -g @skepagent/skep" data-i18n="hero.installLabel" data-i18n-attr="aria-label">
@@ -100,7 +100,7 @@
           </button>
           <a class="btn btn-secondary" href="https://github.com/Guxiaodong941005/skepAgent" rel="noopener"><span data-i18n="hero.github">View on GitHub</span> <span aria-hidden="true">→</span></a>
         </div>
-        <p class="fineprint mono" data-i18n="hero.fineprint">Node.js ≥ 22.12 · macOS &amp; Linux · bins: <code>skep</code>, <code>skepd</code></p>
+        <p class="fineprint mono" data-i18n="hero.fineprint">Node.js ≥ 22.12 · macOS &amp; Linux · bins: <code>skep</code>, <code>skep</code></p>
 
         <!-- Terminal mockup -->
         <div class="terminal hero-terminal" data-tabs>
@@ -109,7 +109,7 @@
             <div class="tabs" role="tablist" aria-label="Terminal demos" data-i18n="demos.ariaLabel" data-i18n-attr="aria-label">
               <button role="tab" id="ht-1" aria-controls="hp-1" aria-selected="true" tabindex="0" data-i18n="demos.local.tabLabel">1. Local Agent <span class="mono dim" data-i18n="demos.local.tab">(skep)</span></button>
               <button role="tab" id="ht-2" aria-controls="hp-2" aria-selected="false" tabindex="-1" data-i18n="demos.session.tab">2. Multi-Device Session</button>
-              <button role="tab" id="ht-3" aria-controls="hp-3" aria-selected="false" tabindex="-1" data-i18n="demos.blackboard.tab">3. Git Blackboard</button>
+              <button role="tab" id="ht-3" aria-controls="hp-3" aria-selected="false" tabindex="-1" data-i18n="demos.session.tab">3. session</button>
             </div>
           </div>
 
@@ -143,16 +143,16 @@
           </div>
 
           <div class="term-body" role="tabpanel" id="hp-3" aria-labelledby="ht-3" tabindex="0" hidden>
-<pre class="mono"><span class="c-mut"># the blackboard is a plain git repo; main is a signed, linear event log</span>
-<span class="c-pri">$</span> git -C ~/.skep/blackboard log --show-signature --oneline -5
-<span class="c-cyan">9f82d1c</span> <span class="c-em" data-i18n="demos.blackboard.masterSignature">Good "git" signature for skepd@devbox</span>   work.delivered   T-12/I-1 epoch 2
-<span class="c-cyan">3ab04e7</span> <span class="c-em" data-i18n="demos.blackboard.subSignature">Good "git" signature for skepd@macbook</span>  review.submitted T-12/I-1
-<span class="c-cyan">c71e9a0</span> <span class="c-em" data-i18n="demos.blackboard.masterSignature">Good "git" signature for skepd@devbox</span>   lease.claimed    T-12/I-1 epoch 2
-<span class="c-cyan">58d2f11</span> <span class="c-em" data-i18n="demos.blackboard.humanSignature">Good "git" signature for human@owner</span>    plan.approved    T-12
-<span class="c-cyan">0be6a44</span> <span class="c-em" data-i18n="demos.blackboard.masterSignature">Good "git" signature for skepd@devbox</span>   plan.proposed    T-12
+<pre class="mono"><span class="c-mut"># the session is a plain git repo; main is a signed, linear event log</span>
+<span class="c-pri">$</span> git -C ~/.skep/session log --show-signature --oneline -5
+<span class="c-cyan">9f82d1c</span> <span class="c-em" data-i18n="demos.session.masterSignature">Good "git" signature for skep@devbox</span>   work.delivered   T-12/I-1 epoch 2
+<span class="c-cyan">3ab04e7</span> <span class="c-em" data-i18n="demos.session.subSignature">Good "git" signature for skep@macbook</span>  review.submitted T-12/I-1
+<span class="c-cyan">c71e9a0</span> <span class="c-em" data-i18n="demos.session.masterSignature">Good "git" signature for skep@devbox</span>   lease.claimed    T-12/I-1 epoch 2
+<span class="c-cyan">58d2f11</span> <span class="c-em" data-i18n="demos.session.humanSignature">Good "git" signature for human@owner</span>    plan.approved    T-12
+<span class="c-cyan">0be6a44</span> <span class="c-em" data-i18n="demos.session.masterSignature">Good "git" signature for skep@devbox</span>   plan.proposed    T-12
 
 <span class="c-pri">$</span> skep status
-  T-12  <span class="c-em" data-i18n="demos.blackboard.verified">verified</span>  <span data-i18n="demos.blackboard.status">1 item · stacked PR ready for <span class="c-pri" data-i18n="demos.blackboard.mergeOwner">your</span> merge</span> <span class="c-mut" data-i18n="demos.blackboard.mergeNote">(Skep never auto-merges)</span></pre>
+  T-12  <span class="c-em" data-i18n="demos.session.verified">verified</span>  <span data-i18n="demos.session.status">1 item · stacked PR ready for <span class="c-pri" data-i18n="demos.session.mergeOwner">your</span> merge</span> <span class="c-mut" data-i18n="demos.session.mergeNote">(Skep never auto-merges)</span></pre>
           </div>
         </div>
       </div>
@@ -171,19 +171,19 @@
             <span class="step-n mono" data-i18n="howItWorks.step1.number">01</span>
             <h3 data-i18n="howItWorks.step1.title">Install &amp; launch</h3>
             <p class="tag" data-i18n="howItWorks.step1.body">Zero infrastructure needed.</p>
-            <p data-i18n="howItWorks.step1.detail">Install <code>@skepagent/skep</code> from npm. Run bare <code>skep</code> in any repo to open your local agent CLI (claude, codex or pi). Run <code>skepd</code> as a per-device service when you want the blackboard.</p>
+            <p data-i18n="howItWorks.step1.detail">Install <code>@skepagent/skep</code> from npm. Run bare <code>skep</code> in any repo to open your local agent CLI (claude, codex or pi). Run <code>skep</code> as a per-device service when you want the session.</p>
           </li>
           <li class="card step">
             <span class="step-n mono" data-i18n="howItWorks.step2.number">02</span>
-            <h3 data-i18n="howItWorks.step2.title">Decentralized git blackboard</h3>
+            <h3 data-i18n="howItWorks.step2.title">Decentralized session</h3>
             <p class="tag" data-i18n="howItWorks.step2.body">State lives where code lives.</p>
-            <p data-i18n="howItWorks.step2.detail">Every state change is one JSON event in one SSH-signed commit on the blackboard repo's <code>main</code>. Each device replays the log with a deterministic reducer, so devices at the same tip agree on who owns what without ever talking to each other.</p>
+            <p data-i18n="howItWorks.step2.detail">Every state change is one JSON event in one SSH-signed commit on the session repo's <code>main</code>. Each device replays the log with a deterministic reducer, so devices at the same tip agree on who owns what without ever talking to each other.</p>
           </li>
           <li class="card step">
             <span class="step-n mono" data-i18n="howItWorks.step3.number">03</span>
             <h3 data-i18n="howItWorks.step3.title">Live &amp; async pairing</h3>
             <p class="tag" data-i18n="howItWorks.step3.body">Work locally, hand off globally.</p>
-            <p data-i18n="howItWorks.step3.detail">Use <code>skep session start</code> / <code>join</code> for an in-memory session across your LAN, or let <code>skepd</code> plan, claim and execute work in the background and publish it as stacked pull requests.</p>
+            <p data-i18n="howItWorks.step3.detail">Use <code>skep session start</code> / <code>join</code> for an in-memory session across your LAN, or let <code>skep</code> plan, claim and execute work in the background and publish it as stacked pull requests.</p>
           </li>
         </ol>
       </div>
@@ -198,7 +198,7 @@
         <header class="section-head">
           <p class="kicker mono hive-kicker"><svg class="i hive-kicker-icon" aria-hidden="true" focusable="false"><use href="#i-hive"/></svg><span data-i18n="hive.kicker">The hive</span></p>
           <h2 id="hive-title" data-i18n="hive.title">A hive for agents. You hold the merge.</h2>
-          <p class="sub" data-i18n="hive.sub">A skep is a traditional basket beehive. Here, the hive is a shared way of working: agents run on your devices, coordinate through signed git, and bring the result back to you.</p>
+          <p class="sub" data-i18n="hive.sub">A skep is a traditional basket beehive. Here, the hive is a shared way of working: agents run on your devices, coordinate through live sessions, and bring the result back to you.</p>
           <p class="hive-tagline" data-i18n="hive.tagline">Independent devices. Shared coordination. Human control.</p>
         </header>
 
@@ -227,11 +227,11 @@
                 <li class="hive-device"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-server"/></svg><span data-i18n="hive.device.server">Always-on server</span></li>
               </ul>
             </div>
-            <div class="card hive-node hive-node--blackboard">
+            <div class="card hive-node hive-node--session">
               <span class="hive-step mono" data-i18n="hive.step4.label">04 · Shared event log</span>
               <span class="hive-badge"><svg class="i hive-icon" aria-hidden="true" focusable="false"><use href="#i-signed-log"/></svg></span>
-              <h3 data-i18n="hive.step4.title">Signed git records the handoff</h3>
-              <p data-i18n="hive.step4.body">Daemons publish SSH-signed events to the blackboard: plans, claims, reviews, and delivery.</p>
+              <h3 data-i18n="hive.step4.title">Live sessions records the handoff</h3>
+              <p data-i18n="hive.step4.body">Daemons publish SSH-signed events to the session: plans, claims, reviews, and delivery.</p>
               <p class="hive-meta mono" data-i18n="hive.step4.badge">SSH-signed</p>
             </div>
             <div class="card hive-node hive-node--merge">
@@ -242,7 +242,7 @@
               <p class="hive-meta" data-i18n="hive.step5.badge">Never auto-merges</p>
             </div>
           </div>
-          <figcaption class="hive-caption" id="hive-caption" data-i18n="hive.caption">A conceptual workflow, not a network map. Devices sync with the git blackboard throughout the work. Code and pull requests live in the code repository; coordination events live in the blackboard.</figcaption>
+          <figcaption class="hive-caption" id="hive-caption" data-i18n="hive.caption">A conceptual workflow, not a network map. Devices sync with the session throughout the work. Code and pull requests live in the code repository; coordination events live in the session.</figcaption>
         </figure>
         <p class="hive-trust-note" data-i18n="hive.note">Signed events make the handoff auditable. They do not replace code review.</p>
         <p class="hive-link-row"><a class="hive-link" href="#architecture" data-i18n="hive.architectureLink">Explore the architecture →</a></p>
@@ -254,13 +254,13 @@
       <div class="wrap arch">
         <header class="section-head">
           <p class="kicker mono" data-i18n="architecture.kicker">Architecture</p>
-          <h2 data-i18n="architecture.title">A daemon per device. A git repo in the middle.</h2>
-          <p class="sub" data-i18n="architecture.sub">The human drives <code>skep</code>. Each device runs one <code>skepd</code> that only makes outbound connections to your git remote. There is no coordinator to run or trust.</p>
+          <h2 data-i18n="architecture.title">A session master. Local agents everywhere.</h2>
+          <p class="sub" data-i18n="architecture.sub">You drive <code>skep</code>. One device runs the session master; peers join with a code. Each machine keeps its own provider credentials.</p>
         </header>
         <div class="arch-grid">
           <div class="terminal arch-diagram">
             <div class="term-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="term-title mono" data-i18n="architecture.filename">architecture.txt</span></div>
-<pre class="term-body mono" aria-label="Architecture diagram" data-i18n="architecture.diagramLabel" data-i18n-attr="aria-label"> <span class="c-pri">human</span> ──► <span class="c-cyan">skep</span> (CLI) ──unix socket──► <span class="c-cyan">skepd</span> (one per device)
+<pre class="term-body mono" aria-label="Architecture diagram" data-i18n="architecture.diagramLabel" data-i18n-attr="aria-label"> <span class="c-pri">human</span> ──► <span class="c-cyan">skep</span> (CLI) ──unix socket──► <span class="c-cyan">skep</span> (one per device)
                                          ├─ sync: fetch → <span class="c-pri" data-i18n="architecture.reducer">reducer</span> → state
                                          ├─ publisher: single writer, <span class="c-em" data-i18n="architecture.signed">signed</span>
                                          ├─ heartbeats: hb/&lt;agent&gt; refs
@@ -268,12 +268,12 @@
                                                └─ agent CLI in a worktree
                                                      └─ checks → push → stacked PR
 
- <span class="c-amb" data-i18n="architecture.blackboardRepo">blackboard repo</span> (main = signed log) ◄──► every device's skepd
+ <span class="c-amb" data-i18n="architecture.sessionRepo">session repo</span> (join-code channel) ◄──► every device's skep
  <span class="c-amb" data-i18n="architecture.codeRepo">code repo</span> (branches, PRs)           ◄──► executing devices</pre>
           </div>
           <ul class="arch-points">
-            <li><strong data-i18n="architecture.point1.title">Deterministic code enforces the protocol.</strong> <span data-i18n="architecture.point1.body">Models only produce content: plans, reviews and code. Daemons validate, authorize, sequence, test, sign and publish.</span></li>
-            <li><strong data-i18n="architecture.point2.title">No inbound connectivity (D18).</strong> <span data-i18n="architecture.point2.body">Blackboard devices never connect to each other. No mesh VPN or fixed IP is required.</span></li>
+            <li><strong data-i18n="architecture.point1.title">Deterministic code enforces the protocol.</strong> <span data-i18n="architecture.point1.body">Models only produce content: plans, reviews and code. Skep validates, authorize, sequence, test, sign and publish.</span></li>
+            <li><strong data-i18n="architecture.point2.title">No inbound connectivity (D18).</strong> <span data-i18n="architecture.point2.body">peers connect only to the session master. No mesh VPN or fixed IP is required.</span></li>
             <li><strong data-i18n="architecture.point3.title">Human holds the gates.</strong> <span data-i18n="architecture.point3.body">You create tasks, approve plans, revoke leases, decide escalations and merge.</span></li>
             <li><strong data-i18n="architecture.point4.title">Single-agent fast path by default.</strong> <span data-i18n="architecture.point4.body">Team mode with several items, peer review and stacked PRs only when the task needs it.</span></li>
           </ul>
@@ -291,13 +291,13 @@
         <div class="features">
           <article class="card feature">
             <svg class="fi" aria-hidden="true"><use href="#i-git"/></svg>
-            <h3 data-i18n="features.blackboard.title">Signed git blackboard</h3>
-            <p data-i18n="features.blackboard.body">Commits as event logs. Every task, plan, lease and delivery is an SSH-signed event, verified against each device's local <code>allowed_signers</code>. Forged or unsigned commits become no-ops and raise an alarm.</p>
+            <h3 data-i18n="features.session.title">Signed session</h3>
+            <p data-i18n="features.session.body">Commits as event logs. Every task, plan, lease and delivery is an SSH-signed event, verified against each device's local <code>allowed_signers</code>. Forged or unsigned commits become no-ops and raise an alarm.</p>
           </article>
           <article class="card feature">
             <svg class="fi" aria-hidden="true"><use href="#i-layers"/></svg>
             <h3 data-i18n="features.execution.title">Dual-mode execution</h3>
-            <p data-i18n="features.execution.body">Use bare <code>skep</code> to open your local agent interactively. Use the <code>skepd</code> daemon for background plan, review, claim and execute slots across devices.</p>
+            <p data-i18n="features.execution.body">Use bare <code>skep</code> to open your local agent interactively. Use the <code>skep</code> daemon for background plan, review, claim and execute slots across devices.</p>
           </article>
           <article class="card feature">
             <svg class="fi" aria-hidden="true"><use href="#i-term"/></svg>
@@ -343,7 +343,7 @@
           <ul class="sec-points">
             <li class="card">
               <h3><svg class="i c-em" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="security.chain.title">SSH-signed event chain</span></h3>
-              <p data-i18n="security.chain.body">Every blackboard commit is signed with an SSH key and checked against a trust root that each device installs locally. Fingerprints are compared out of band at <code>skep init</code>.</p>
+              <p data-i18n="security.chain.body">Every session commit is signed with an SSH key and checked against a trust root that each device installs locally. Fingerprints are compared out of band at <code>skep init</code>.</p>
             </li>
             <li class="card">
               <h3><svg class="i c-em" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="security.noSync.title">Strict no-credential sync</span></h3>
@@ -351,7 +351,7 @@
             </li>
             <li class="card">
               <h3><svg class="i c-em" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="security.audit.title">Auditable history</span></h3>
-              <p data-i18n="security.audit.body">When an agent makes a mistake, <code>git log</code> on the blackboard shows exactly which device, key and event made each step. The genesis commit is human-signed.</p>
+              <p data-i18n="security.audit.body">When an agent makes a mistake, <code>git log</code> on the session shows exactly which device, key and event made each step. The genesis commit is human-signed.</p>
             </li>
             <li class="card">
               <h3><svg class="i c-em" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="security.control.title">No auto-merge, ever</span></h3>
@@ -384,7 +384,7 @@
 
           <div class="term-body qs-panel" role="tabpanel" id="qp-1" aria-labelledby="qt-1" tabindex="0">
             <button class="copy-btn copy-corner" type="button" data-copy-target="qc-1" aria-label="Copy commands" data-i18n="quickstart.copyLabel" data-i18n-attr="aria-label"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span data-i18n="btn.copy">Copy</span></button>
-<pre class="mono" id="qc-1"><span class="c-mut"># 1. Install globally (bins: skep, skepd)</span>
+<pre class="mono" id="qc-1"><span class="c-mut"># 1. Install globally (bins: skep, skep)</span>
 npm install -g @skepagent/skep</pre>
           </div>
           <div class="term-body qs-panel" role="tabpanel" id="qp-2" aria-labelledby="qt-2" tabindex="0" hidden>
@@ -408,10 +408,10 @@ skep session intent "what should be done"</pre>
           </div>
           <div class="term-body qs-panel" role="tabpanel" id="qp-4" aria-labelledby="qt-4" tabindex="0" hidden>
             <button class="copy-btn copy-corner" type="button" data-copy-target="qc-4" aria-label="Copy commands" data-i18n="quickstart.copyLabel" data-i18n-attr="aria-label"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span data-i18n="btn.copy">Copy</span></button>
-<pre class="mono" id="qc-4"><span class="c-mut"># 5. Blackboard mode: one empty private git repo + skepd on every device</span>
+<pre class="mono" id="qc-4"><span class="c-mut"># 5. session mode: one empty private git repo + skep on every device</span>
 skep init                 <span class="c-mut"># per device: daemon key + allowed_signers line</span>
 skep init --genesis --human-key &lt;path&gt;   <span class="c-mut"># controller only, once</span>
-skepd                     <span class="c-mut"># run as a service (systemd / launchd)</span>
+skep                     <span class="c-mut"># run as a service (systemd / launchd)</span>
 skep doctor
 
 skep task new "…" --repo &lt;allowlist-name&gt; --owner &lt;agent&gt;
