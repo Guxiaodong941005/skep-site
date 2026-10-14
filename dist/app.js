@@ -154,32 +154,26 @@
     }
   });
 
-  // Accessible tabs (WAI-ARIA pattern with arrow-key navigation).
-  document.querySelectorAll("[data-tabs]").forEach((root) => {
-    const tabs = Array.from(root.querySelectorAll('[role="tab"]'));
-    function select(tab, focus) {
-      tabs.forEach((t) => {
-        const on = t === tab;
-        t.setAttribute("aria-selected", String(on));
-        t.tabIndex = on ? 0 : -1;
-        const panel = document.getElementById(t.getAttribute("aria-controls"));
-        if (panel) panel.hidden = !on;
+  // Hive demo: orchestrate mode toggles + replay (restarts line reveal and flight animations).
+  const stage = document.querySelector("[data-stage]");
+  if (stage) {
+    const btns = Array.from(stage.querySelectorAll("[data-mode-btn]"));
+    const svg = stage.querySelector("svg");
+    function setMode(mode) {
+      stage.dataset.mode = "";
+      void stage.offsetWidth; // reflow so the log line animations restart
+      stage.dataset.mode = mode;
+      btns.forEach((b) => {
+        const on = b.dataset.modeBtn === mode;
+        b.classList.toggle("is-on", on);
+        b.setAttribute("aria-pressed", String(on));
       });
-      if (focus) tab.focus();
-      tab.scrollIntoView({ block: "nearest", inline: "nearest" });
+      if (svg && svg.setCurrentTime) svg.setCurrentTime(0);
     }
-    tabs.forEach((tab, i) => {
-      tab.addEventListener("click", () => select(tab, false));
-      tab.addEventListener("keydown", (e) => {
-        let next = null;
-        if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
-        else if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
-        else if (e.key === "Home") next = tabs[0];
-        else if (e.key === "End") next = tabs[tabs.length - 1];
-        if (next) { e.preventDefault(); select(next, true); }
-      });
-    });
-  });
+    btns.forEach((b) => b.addEventListener("click", () => setMode(b.dataset.modeBtn)));
+    const replay = stage.querySelector("[data-replay]");
+    if (replay) replay.addEventListener("click", () => setMode(stage.dataset.mode || "auto"));
+  }
 
   // GitHub star count: one anonymous public API call, cached per browser for an hour.
   const starsEl = document.querySelector("[data-stars]");

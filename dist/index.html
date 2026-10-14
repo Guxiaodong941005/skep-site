@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-i18n="meta.title">Skep — Multi-Device AI Coding Agents over Live Sessions</title>
-  <meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="Coordinate AI coding agents across devices with join-code sessions and a local TUI. Open source CLI (@skepagent/skep).">
-  <meta name="keywords" content="ai agents, coding agent, multi-agent collaboration, skep, session, join code, autonomous coding">
+  <title data-i18n="meta.title">Skep — Cross-device collaboration for AI coding agents</title>
+  <meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="Cross-device collaboration for AI coding agents via live join-code sessions. Open source CLI @skepagent/skep v0.1.14. Credentials never leave your device.">
+  <meta name="keywords" content="ai coding agents, multi-device, join code, live session, skep, orchestrate, tui">
   <link rel="canonical" href="https://skepagent.com/">
   <meta name="theme-color" content="#080A0E">
   <meta name="color-scheme" content="dark">
@@ -13,25 +13,21 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Skep">
   <meta property="og:url" content="https://skepagent.com/">
-  <meta property="og:title" content="Skep — Multi-Device AI Coding Agent Collaboration">
-  <meta property="og:description" content="Multi-device AI agent collaboration over live join-code sessions. Local API keys stay local.">
+  <meta property="og:title" content="Skep — Cross-device collaboration for AI coding agents">
+  <meta property="og:description" content="Cross-device collaboration for AI coding agents via live join-code sessions. v0.1.14.">
   <meta property="og:image" content="https://skepagent.com/og-image.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Skep: multi-agent coding across devices, connected by live sessions.">
-
+  <meta property="og:image:alt" content="Skep: AI coding agents collaborating across devices through live join-code sessions.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Skep — Multi-Device AI Coding Agent Collaboration">
-  <meta name="twitter:description" content="Multi-device AI agent collaboration over live join-code sessions.">
+  <meta name="twitter:title" content="Skep — Cross-device collaboration for AI coding agents">
+  <meta name="twitter:description" content="Cross-device collaboration for AI coding agents via live join-code sessions.">
   <meta name="twitter:image" content="https://skepagent.com/og-image.png">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20261009-5">
-  <script src="/app.js?v=20261009-5" defer></script>
+  <link rel="stylesheet" href="/styles.css?v=20261014-1">
+  <script src="/app.js?v=20261014-1" defer></script>
 
   <script type="application/ld+json">
   {
@@ -41,7 +37,7 @@
     "description": "Cross-device collaboration for AI coding agents via live join-code sessions.",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "macOS, Linux",
-    "softwareVersion": "0.1.2",
+    "softwareVersion": "0.1.14",
     "license": "https://opensource.org/licenses/MIT",
     "url": "https://skepagent.com/",
     "codeRepository": "https://github.com/Guxiaodong941005/skepAgent",
@@ -54,387 +50,200 @@
 
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="Skep home" data-i18n="nav.homeLabel" data-i18n-attr="aria-label">
-        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><use href="#logo"/></svg>
-        <span class="brand-name">skep</span>
-        <span class="badge mono">v0.1.2</span>
+      <a class="brand" href="/" data-i18n="nav.homeLabel" data-i18n-attr="aria-label" aria-label="Skep home">
+        <svg class="hex" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5l9 5.25v10.5L12 22.5 3 17.25V6.75z"/></svg>
+        <span class="mono brand-name">skep</span>
+        <span class="mono ver">v0.1.14</span>
       </a>
-      <nav class="nav-links" aria-label="Sections" data-i18n="nav.sectionsLabel" data-i18n-attr="aria-label">
-        <a href="#how-it-works" data-i18n="nav.howItWorks">How It Works</a>
-        <a href="#architecture" data-i18n="nav.architecture">Architecture</a>
+      <nav class="nav-links" data-i18n="nav.sectionsLabel" data-i18n-attr="aria-label" aria-label="Sections">
+        <a href="#demo" data-i18n="nav.demo">Demo</a>
+        <a href="#quickstart" data-i18n="nav.quickstart">Quickstart</a>
         <a href="#features" data-i18n="nav.features">Features</a>
         <a href="#security" data-i18n="nav.security">Security</a>
-        <a href="#quickstart" data-i18n="nav.quickstart">Quickstart</a>
       </nav>
       <div class="nav-actions">
-        <label class="lang-switch">
-          <span class="sr-only" data-i18n="lang.switcherLabel">Language</span>
-          <svg class="i lang-globe" aria-hidden="true"><use href="#i-globe"/></svg>
-          <select id="lang-select" class="lang-select" aria-label="Language" data-i18n="lang.switcherLabel" data-i18n-attr="aria-label">
-            <option value="en" lang="en">EN</option>
-            <option value="zh" lang="zh-CN">中文</option>
-          </select>
-        </label>
-        <button class="btn btn-ghost btn-sm copy-btn mono nav-install" type="button" data-copy="npm install -g @skepagent/skep" aria-label="Copy install command" data-i18n="nav.installLabel" data-i18n-attr="aria-label">
-          <span>npm i -g @skepagent/skep</span><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg>
-        </button>
-        <a class="btn btn-ghost btn-sm nav-github" href="https://github.com/Guxiaodong941005/skepAgent" rel="noopener">
-          <svg class="i" aria-hidden="true"><use href="#i-github"/></svg>
-          <span class="nav-github-label" data-i18n="nav.github">GitHub</span>
-          <span class="stars mono" data-stars hidden><svg class="i i-xs" aria-hidden="true"><use href="#i-star"/></svg><span data-stars-count></span></span>
-        </a>
+        <label class="sr" for="lang-select" data-i18n="nav.language">Language</label>
+        <select id="lang-select" class="lang mono">
+          <option value="en">EN</option>
+          <option value="zh">中文</option>
+        </select>
+        <a class="btn btn-ghost" href="https://github.com/Guxiaodong941005/skepAgent" target="_blank" rel="noopener noreferrer" data-i18n="nav.github">GitHub</a>
+        <a class="btn btn-primary nav-install" href="#install" data-i18n="nav.install">Install</a>
       </div>
     </div>
   </header>
 
   <main id="main">
-    <!-- Hero -->
-    <section class="hero" id="top">
-      <div class="grid-bg" aria-hidden="true"></div>
+    <section class="hero" id="install">
       <div class="wrap hero-inner">
-        <p class="eyebrow mono"><span class="pill pill-amber" data-i18n="hero.badge">Prerelease v0.1.2</span><span class="dot-sep">·</span><span data-i18n="hero.license">Open source MIT</span></p>
-        <h1><span data-i18n="hero.titleLine1">Multi-agent coding across devices.</span><br><span class="accent" data-i18n="hero.title" class="hero-title-grad">Connected by live sessions.</span></h1>
-        <p class="lead" data-i18n="hero.lead">Run AI coding agents on your laptop, your GPU rig and an always-on server. Skep gives them an SSH-signed session for asynchronous handoffs and a live session TUI for real-time work, and it never moves provider credentials between machines.</p>
-
-        <div class="cta-row">
-          <button class="code-pill copy-btn" type="button" data-copy="npm install -g @skepagent/skep" aria-label="Copy install command: npm install -g @skepagent/skep" data-i18n="hero.installLabel" data-i18n-attr="aria-label">
-            <span class="mono"><span class="prompt">$</span> npm i -g @skepagent/skep</span>
-            <svg class="i" aria-hidden="true"><use href="#i-copy"/></svg>
-          </button>
-          <a class="btn btn-secondary" href="https://github.com/Guxiaodong941005/skepAgent" rel="noopener"><span data-i18n="hero.github">View on GitHub</span> <span aria-hidden="true">→</span></a>
+        <p class="pill mono"><span class="dot"></span><span data-i18n="hero.badge">@skepagent/skep v0.1.14</span></p>
+        <h1 data-i18n="hero.title">Your agents, on every device, in one live session.</h1>
+        <p class="lead" data-i18n="hero.lead">Cross-device collaboration for AI coding agents via live join-code sessions.</p>
+        <div class="install">
+          <code class="mono"><span class="prompt">$</span> npm install -g @skepagent/skep@0.1.14</code>
+          <button class="copy-btn" type="button" data-copy="npm install -g @skepagent/skep@0.1.14" data-i18n="btn.copy">Copy</button>
         </div>
-        <p class="fineprint mono" data-i18n="hero.fineprint">Node.js ≥ 22.12 · macOS &amp; Linux · bins: <code>skep</code>, <code>skep</code></p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#quickstart" data-i18n="hero.start">Start in 3 steps</a>
+          <a class="btn btn-ghost" href="https://www.npmjs.com/package/@skepagent/skep" target="_blank" rel="noopener noreferrer" data-i18n="hero.npm">View on npm</a>
+        </div>
+        <p class="fine mono" data-i18n="hero.fineprint">MIT · Node.js ≥ 22.12 · macOS &amp; Linux · bin: <code>skep</code></p>
+      </div>
+    </section>
 
-        <!-- Terminal mockup -->
-        <div class="terminal hero-terminal" data-tabs>
-          <div class="term-bar">
-            <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="tabs" role="tablist" aria-label="Terminal demos" data-i18n="demos.ariaLabel" data-i18n-attr="aria-label">
-              <button role="tab" id="ht-1" aria-controls="hp-1" aria-selected="true" tabindex="0" data-i18n="demos.local.tabLabel">1. Local Agent <span class="mono dim" data-i18n="demos.local.tab">(skep)</span></button>
-              <button role="tab" id="ht-2" aria-controls="hp-2" aria-selected="false" tabindex="-1" data-i18n="demos.session.tab">2. Multi-Device Session</button>
-              <button role="tab" id="ht-3" aria-controls="hp-3" aria-selected="false" tabindex="-1" data-i18n="demos.session.tab">3. session</button>
+    <section class="section" id="demo">
+      <div class="wrap">
+        <h2 data-i18n="demo.title">One master, many peers</h2>
+        <p class="sub" data-i18n="demo.sub">Start a session, peers join with a code, and work flows between devices.</p>
+
+        <div class="stage reveal" data-stage data-mode="auto">
+          <div class="stage-bar">
+            <span class="mono stage-label" data-i18n="demo.modeLabel">/orchestrate</span>
+            <div class="modes" role="group" data-i18n="demo.modesLabel" data-i18n-attr="aria-label" aria-label="Orchestrator mode">
+              <button type="button" class="mode mono is-on" data-mode-btn="auto" aria-pressed="true">auto</button>
+              <button type="button" class="mode mono" data-mode-btn="confirm" aria-pressed="false">confirm</button>
+              <button type="button" class="mode mono" data-mode-btn="off" aria-pressed="false">off</button>
             </div>
+            <button type="button" class="mode mono replay" data-replay data-i18n="demo.replay">↻ Replay</button>
           </div>
 
-          <div class="term-body" role="tabpanel" id="hp-1" aria-labelledby="ht-1" tabindex="0">
-<pre class="mono"><span class="c-mut"># inside any git checkout</span>
-<span class="c-cyan">~/code/api</span> <span class="c-mut">(main)</span> <span class="c-pri">$</span> skep
-<span class="c-em">✓</span> <span data-i18n="demos.local.found">found agent CLI:</span> <span class="c-pri">claude</span> <span class="c-mut" data-i18n="demos.local.fallbacks">(fallbacks: codex, pi)</span>
-<span class="c-em">✓</span> <span data-i18n="demos.local.ownLogin">using this device's own login</span> <span class="c-mut" data-i18n="demos.local.credentialNote">— nothing is copied (D19)</span>
-<span class="c-cyan">→</span> <span data-i18n="demos.local.opening">opening claude with Skep's guide as the first message…</span>
+          <div class="stage-body">
+            <svg class="topo" viewBox="0 0 640 320" role="img" data-i18n="demo.diagramLabel" data-i18n-attr="aria-label" aria-label="Master device dispatching briefs to three peer devices and receiving summaries">
+              <defs>
+                <path id="fp1" d="M 150 160 C 280 90, 360 60, 470 56"/>
+                <path id="fp2" d="M 150 160 C 280 160, 360 160, 470 160"/>
+                <path id="fp3" d="M 150 160 C 280 230, 360 260, 470 264"/>
+                <linearGradient id="amber" x1="0" x2="1">
+                  <stop offset="0" stop-color="#F59E0B"/><stop offset="1" stop-color="#10B981"/>
+                </linearGradient>
+              </defs>
 
-<span class="c-mut">┌─ claude ─────────────────────────────────────────────</span>
-<span class="c-mut">│</span> <span class="c-pri">&gt;</span> <span data-i18n="demos.local.prompt">add rate limiting to /v1/login</span>
-<span class="c-mut">│</span>   <span class="c-mut" data-i18n="demos.local.agentNoteLine1">The agent keeps its own TUI. Skep stays out of</span>
-<span class="c-mut">│</span>   <span class="c-mut" data-i18n="demos.local.agentNoteLine2">the way and never approves tool use for you.</span>
-<span class="c-mut">└──────────────────────────────────────────────────────</span></pre>
-          </div>
+              <g class="tracks">
+                <use href="#fp1" class="flight-line t1"/>
+                <use href="#fp2" class="flight-line t2"/>
+                <use href="#fp3" class="flight-line t3"/>
+              </g>
 
-          <div class="term-body" role="tabpanel" id="hp-2" aria-labelledby="ht-2" tabindex="0" hidden>
-<pre class="mono"><span class="c-mut"># workstation (master)</span>
-<span class="c-cyan">devbox</span> <span class="c-pri">$</span> skep session start
-<span class="c-em">✓</span> <span data-i18n="demos.session.listening">session master listening on</span> <span class="c-cyan">192.168.1.20:7419</span>
-  <span data-i18n="demos.session.joinCodeLabel">join code:</span> <span class="c-amb">4821-0937-5520</span>
+              <!-- master hive -->
+              <g class="hive hive-master">
+                <path class="hex-shape" d="M 110 100 L 150 100 L 170 160 L 150 220 L 110 220 L 90 160 Z" transform="translate(-20 0)"/>
+                <text x="110" y="153" text-anchor="middle" class="svg-mono svg-strong">master</text>
+                <text x="110" y="173" text-anchor="middle" class="svg-mono svg-dim">:7419</text>
+                <g>
+                  <g class="bee-sprite"><text x="152" y="160" text-anchor="middle" class="svg-bee">🐝</text></g>
+                  <animateTransform attributeName="transform" type="rotate" from="0 110 160" to="360 110 160" dur="3.2s" repeatCount="indefinite"/>
+                </g>
+              </g>
 
-<span class="c-mut"># laptop (sub)</span>
-<span class="c-cyan">macbook</span> <span class="c-pri">$</span> skep session join --code 4821-0937-5520 --host 192.168.1.20:7419 --ui
-<span class="c-em">✓</span> <span data-i18n="demos.session.joined">joined as <span class="c-pri">macbook</span></span> <span class="c-mut" data-i18n="demos.session.role">(role: coding)</span>
+              <!-- peers -->
+              <g class="hive hive-peer p1">
+                <rect x="470" y="30" width="150" height="52" rx="12"/>
+                <text x="545" y="52" text-anchor="middle" class="svg-mono svg-strong">macbook</text>
+                <text x="545" y="70" text-anchor="middle" class="svg-mono svg-dim">peer · api</text>
+              </g>
+              <g class="hive hive-peer p2">
+                <rect x="470" y="134" width="150" height="52" rx="12"/>
+                <text x="545" y="156" text-anchor="middle" class="svg-mono svg-strong">gpu-rig</text>
+                <text x="545" y="174" text-anchor="middle" class="svg-mono svg-dim">peer · web</text>
+              </g>
+              <g class="hive hive-peer p3">
+                <rect x="470" y="238" width="150" height="52" rx="12"/>
+                <text x="545" y="260" text-anchor="middle" class="svg-mono svg-strong">server</text>
+                <text x="545" y="278" text-anchor="middle" class="svg-mono svg-dim">peer · worker</text>
+              </g>
 
-<span class="c-cyan">devbox</span> <span class="c-pri">$</span> skep session intent "split auth middleware into its own module"
-  <span data-i18n="demos.session.item">item</span> <span class="c-cyan">I-1</span> → macbook  <span class="c-mut" data-i18n="demos.session.agentStatus">agent: running · output tail redacted</span>
-  <span data-i18n="demos.session.item">item</span> <span class="c-cyan">I-1</span> <span class="c-em" data-i18n="demos.session.done">done</span>  <span class="c-mut" data-i18n="demos.session.summary">summary sent to master; full transcript stays on macbook</span></pre>
-          </div>
+              <!-- flying bees with labels -->
+              <g class="flyer f1">
+                <circle r="14" class="halo"/>
+                <g class="bee-sprite"><text y="6" text-anchor="middle" class="svg-bee">🐝</text></g>
+                <text y="-20" text-anchor="middle" class="svg-mono svg-tag" data-i18n="demo.brief">brief →</text>
+                <animateMotion dur="3.4s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"><mpath href="#fp1"/></animateMotion>
+              </g>
+              <g class="flyer f2">
+                <circle r="14" class="halo"/>
+                <g class="bee-sprite"><text y="6" text-anchor="middle" class="svg-bee">🐝</text></g>
+                <text y="-20" text-anchor="middle" class="svg-mono svg-tag" data-i18n="demo.summary">← summary</text>
+                <animateMotion dur="2.8s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"><mpath href="#fp2"/></animateMotion>
+              </g>
+              <g class="flyer f3">
+                <circle r="14" class="halo"/>
+                <g class="bee-sprite"><text y="6" text-anchor="middle" class="svg-bee">🐝</text></g>
+                <text y="-20" text-anchor="middle" class="svg-mono svg-tag" data-i18n="demo.brief">brief →</text>
+                <animateMotion dur="3.9s" repeatCount="indefinite" keyPoints="0;1;0" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"><mpath href="#fp3"/></animateMotion>
+              </g>
+              <g class="confirm-chip">
+                <rect x="190" y="136" width="130" height="28" rx="14"/>
+                <text x="255" y="154" text-anchor="middle" class="svg-mono svg-tag" data-i18n="demo.confirm">awaiting confirm</text>
+              </g>
+            </svg>
 
-          <div class="term-body" role="tabpanel" id="hp-3" aria-labelledby="ht-3" tabindex="0" hidden>
-<pre class="mono"><span class="c-mut"># the session is a plain git repo; main is a signed, linear event log</span>
-<span class="c-pri">$</span> git -C ~/.skep/session log --show-signature --oneline -5
-<span class="c-cyan">9f82d1c</span> <span class="c-em" data-i18n="demos.session.masterSignature">Good "git" signature for skep@devbox</span>   work.delivered   T-12/I-1 epoch 2
-<span class="c-cyan">3ab04e7</span> <span class="c-em" data-i18n="demos.session.subSignature">Good "git" signature for skep@macbook</span>  review.submitted T-12/I-1
-<span class="c-cyan">c71e9a0</span> <span class="c-em" data-i18n="demos.session.masterSignature">Good "git" signature for skep@devbox</span>   lease.claimed    T-12/I-1 epoch 2
-<span class="c-cyan">58d2f11</span> <span class="c-em" data-i18n="demos.session.humanSignature">Good "git" signature for human@owner</span>    plan.approved    T-12
-<span class="c-cyan">0be6a44</span> <span class="c-em" data-i18n="demos.session.masterSignature">Good "git" signature for skep@devbox</span>   plan.proposed    T-12
-
-<span class="c-pri">$</span> skep status
-  T-12  <span class="c-em" data-i18n="demos.session.verified">verified</span>  <span data-i18n="demos.session.status">1 item · stacked PR ready for <span class="c-pri" data-i18n="demos.session.mergeOwner">your</span> merge</span> <span class="c-mut" data-i18n="demos.session.mergeNote">(Skep never auto-merges)</span></pre>
+            <pre class="log mono" aria-live="off" data-log><span class="ln show mode-auto mode-confirm mode-off"><span class="c-mut">$</span> skep session start</span>
+<span class="ln mode-auto mode-confirm mode-off"><span class="c-mut">join code</span> <span class="c-amber">7391-4820-1940</span> <span class="c-mut">·</span> 192.168.1.20:7419</span>
+<span class="ln mode-auto mode-confirm mode-off"><span class="c-em">+</span> macbook, gpu-rig, server <span class="c-mut" data-i18n="demo.log.joined">joined</span></span>
+<span class="ln mode-auto"><span class="c-mut">&gt;</span> /orchestrate auto</span>
+<span class="ln mode-auto"><span class="c-em">→</span> <span data-i18n="demo.log.autoDispatch">split into 3 briefs, dispatched to peers</span></span>
+<span class="ln mode-confirm"><span class="c-mut">&gt;</span> /orchestrate confirm</span>
+<span class="ln mode-confirm"><span class="c-amber">?</span> <span data-i18n="demo.log.confirmWait">proposed 3 briefs, waiting for your confirm</span></span>
+<span class="ln mode-off"><span class="c-mut">&gt;</span> /orchestrate off</span>
+<span class="ln mode-off"><span class="c-amber">→</span> <span data-i18n="demo.log.manual">no auto-split, you route work yourself</span></span>
+<span class="ln mode-auto mode-confirm mode-off"><span class="c-em">✓</span> <span data-i18n="demo.log.summary">summary received · changed files listed</span></span></pre>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- How it works -->
-    <section class="section" id="how-it-works" class="reveal">
+    <section class="section" id="quickstart">
       <div class="wrap">
-        <header class="section-head">
-          <p class="kicker mono" data-i18n="howItWorks.kicker">How it works</p>
-          <h2 data-i18n="howItWorks.title">Three steps, no infrastructure.</h2>
-          <p class="sub" data-i18n="howItWorks.sub">State lives where your code already lives: in git. Any host works.</p>
-        </header>
+        <h2 data-i18n="qs.title">Up in three steps</h2>
+        <p class="sub" data-i18n="qs.sub">Run Skep inside any git repository.</p>
         <ol class="steps">
-          <li class="card step">
-            <span class="step-n mono" data-i18n="howItWorks.step1.number">01</span>
-            <h3 data-i18n="howItWorks.step1.title">Install &amp; launch</h3>
-            <p class="tag" data-i18n="howItWorks.step1.body">Zero infrastructure needed.</p>
-            <p data-i18n="howItWorks.step1.detail">Install <code>@skepagent/skep</code> from npm. Run bare <code>skep</code> in any repo to open your local agent CLI (claude, codex or pi). Run <code>skep</code> as a per-device service when you want the session.</p>
+          <li class="step reveal">
+            <span class="num mono">1</span>
+            <h3 data-i18n="qs.s1.title">Start a session</h3>
+            <p data-i18n="qs.s1.body">On the master device, open a session. You get a join code and an address.</p>
+            <div class="cmd mono"><code>skep session start</code><button class="copy-btn" type="button" data-copy="skep session start" data-i18n="btn.copy">Copy</button></div>
           </li>
-          <li class="card step">
-            <span class="step-n mono" data-i18n="howItWorks.step2.number">02</span>
-            <h3 data-i18n="howItWorks.step2.title">Decentralized session</h3>
-            <p class="tag" data-i18n="howItWorks.step2.body">State lives where code lives.</p>
-            <p data-i18n="howItWorks.step2.detail">Every state change is one JSON event in one SSH-signed commit on the session repo's <code>main</code>. Each device replays the log with a deterministic reducer, so devices at the same tip agree on who owns what without ever talking to each other.</p>
+          <li class="step reveal">
+            <span class="num mono">2</span>
+            <h3 data-i18n="qs.s2.title">Join from another device</h3>
+            <p data-i18n="qs.s2.body">In the peer's TUI, run <code>/join</code> with the code and address. Any repo checkout works.</p>
+            <div class="cmd mono"><code>/join 7391-4820-1940 192.168.1.20:7419</code><button class="copy-btn" type="button" data-copy="/join 7391-4820-1940 192.168.1.20:7419" data-i18n="btn.copy">Copy</button></div>
           </li>
-          <li class="card step">
-            <span class="step-n mono" data-i18n="howItWorks.step3.number">03</span>
-            <h3 data-i18n="howItWorks.step3.title">Live &amp; async pairing</h3>
-            <p class="tag" data-i18n="howItWorks.step3.body">Work locally, hand off globally.</p>
-            <p data-i18n="howItWorks.step3.detail">Use <code>skep session start</code> / <code>join</code> for an in-memory session across your LAN, or let <code>skep</code> plan, claim and execute work in the background and publish it as stacked pull requests.</p>
+          <li class="step reveal">
+            <span class="num mono">3</span>
+            <h3 data-i18n="qs.s3.title">Hand out the work</h3>
+            <p data-i18n="qs.s3.body">Let the orchestrator split it (<code>auto</code>, <code>confirm</code>, <code>off</code>, <code>new</code>), or send an intent yourself.</p>
+            <div class="cmd mono"><code>/orchestrate auto</code><button class="copy-btn" type="button" data-copy="/orchestrate auto" data-i18n="btn.copy">Copy</button></div>
           </li>
         </ol>
+        <p class="note mono" data-i18n="qs.cmds">Also: <code>skep session intent</code> · <code>skep session status</code> · <code>skep ui</code> · <code>skep tui</code></p>
       </div>
     </section>
 
-    <!-- The hive -->
-    <section class="section hive" id="the-hive" class="reveal" aria-labelledby="hive-title">
-      <div class="hive-motif" aria-hidden="true">
-        <svg class="hive-hex-field" viewBox="0 0 160 100" focusable="false"><use href="#i-hive-comb"/></svg>
-      </div>
-      <div class="wrap hive-inner">
-        <header class="section-head">
-          <p class="kicker mono hive-kicker"><svg class="i hive-kicker-icon" aria-hidden="true" focusable="false"><use href="#i-hive"/></svg><span data-i18n="hive.kicker">The hive</span></p>
-          <h2 id="hive-title" data-i18n="hive.title">A hive for agents. You hold the merge.</h2>
-          <p class="sub" data-i18n="hive.sub">A skep is a traditional basket beehive. Here, the hive is a shared way of working: agents run on your devices, coordinate through live sessions, and bring the result back to you.</p>
-          <p class="hive-tagline" data-i18n="hive.tagline">Independent devices. Shared coordination. Human control.</p>
-        </header>
-
-        <figure class="hive-workflow" aria-labelledby="hive-caption">
-          <div class="hive-flow">
-            <div class="card hive-node hive-node--human">
-              <span class="hive-step mono" data-i18n="hive.step1.label">01 · Human</span>
-              <span class="hive-badge"><svg class="i hive-icon" aria-hidden="true" focusable="false"><use href="#i-human"/></svg></span>
-              <h3 data-i18n="hive.step1.title">You set the goal</h3>
-              <p data-i18n="hive.step1.body">Describe the task and approve the plan before execution.</p>
-            </div>
-            <div class="card hive-node hive-node--skep">
-              <span class="hive-step mono" data-i18n="hive.step2.label">02 · Skep</span>
-              <span class="hive-badge"><svg class="hive-logo" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#logo"/></svg><svg class="i hive-bee" aria-hidden="true" focusable="false"><use href="#i-bee"/></svg></span>
-              <h3 data-i18n="hive.step2.title">Skep coordinates</h3>
-              <p data-i18n="hive.step2.body">Use the CLI to guide work; per-device daemons enforce the protocol.</p>
-              <p class="hive-meta mono" data-i18n="hive.step2.badge">CLI + per-device daemons</p>
-            </div>
-            <div class="card hive-node hive-node--devices">
-              <span class="hive-step mono" data-i18n="hive.step3.label">03 · Local agents</span>
-              <h3 data-i18n="hive.step3.title">Agents work locally</h3>
-              <p data-i18n="hive.step3.body">Agents run in local worktrees. Each device keeps its own provider credentials.</p>
-              <ul class="hive-devices" role="list" aria-label="Example devices" data-i18n="hive.step3.devicesLabel" data-i18n-attr="aria-label">
-                <li class="hive-device"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-laptop"/></svg><span data-i18n="hive.device.laptop">Laptop</span></li>
-                <li class="hive-device"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-term"/></svg><span data-i18n="hive.device.gpu">GPU workstation</span></li>
-                <li class="hive-device"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-server"/></svg><span data-i18n="hive.device.server">Always-on server</span></li>
-              </ul>
-            </div>
-            <div class="card hive-node hive-node--session">
-              <span class="hive-step mono" data-i18n="hive.step4.label">04 · Shared event log</span>
-              <span class="hive-badge"><svg class="i hive-icon" aria-hidden="true" focusable="false"><use href="#i-signed-log"/></svg></span>
-              <h3 data-i18n="hive.step4.title">Live sessions records the handoff</h3>
-              <p data-i18n="hive.step4.body">Daemons publish SSH-signed events to the session: plans, claims, reviews, and delivery.</p>
-              <p class="hive-meta mono" data-i18n="hive.step4.badge">SSH-signed</p>
-            </div>
-            <div class="card hive-node hive-node--merge">
-              <span class="hive-step mono" data-i18n="hive.step5.label">05 · Human merge</span>
-              <span class="hive-badge"><svg class="i hive-icon" aria-hidden="true" focusable="false"><use href="#i-human"/></svg><svg class="i hive-icon" aria-hidden="true" focusable="false"><use href="#i-merge"/></svg></span>
-              <h3 data-i18n="hive.step5.title">You review and merge</h3>
-              <p data-i18n="hive.step5.body">Inspect the code, checks, and stacked pull requests. You decide what merges.</p>
-              <p class="hive-meta" data-i18n="hive.step5.badge">Never auto-merges</p>
-            </div>
-          </div>
-          <figcaption class="hive-caption" id="hive-caption" data-i18n="hive.caption">A conceptual workflow, not a network map. Devices sync with the session throughout the work. Code and pull requests live in the code repository; coordination events live in the session.</figcaption>
-        </figure>
-        <p class="hive-trust-note" data-i18n="hive.note">Signed events make the handoff auditable. They do not replace code review.</p>
-        <p class="hive-link-row"><a class="hive-link" href="#architecture" data-i18n="hive.architectureLink">Explore the architecture →</a></p>
-      </div>
-    </section>
-
-    <!-- Architecture -->
-    <section class="section section-alt" id="architecture" class="reveal">
-      <div class="wrap arch">
-        <header class="section-head">
-          <p class="kicker mono" data-i18n="architecture.kicker">Architecture</p>
-          <h2 data-i18n="architecture.title">A session master. Local agents everywhere.</h2>
-          <p class="sub" data-i18n="architecture.sub">You drive <code>skep</code>. One device runs the session master; peers join with a code. Each machine keeps its own provider credentials.</p>
-        </header>
-        <div class="arch-grid">
-          <div class="terminal arch-diagram">
-            <div class="term-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="term-title mono" data-i18n="architecture.filename">architecture.txt</span></div>
-<pre class="term-body mono" aria-label="Architecture diagram" data-i18n="architecture.diagramLabel" data-i18n-attr="aria-label"> <span class="c-pri">human</span> ──► <span class="c-cyan">skep</span> (CLI) ──unix socket──► <span class="c-cyan">skep</span> (one per device)
-                                         ├─ sync: fetch → <span class="c-pri" data-i18n="architecture.reducer">reducer</span> → state
-                                         ├─ publisher: single writer, <span class="c-em" data-i18n="architecture.signed">signed</span>
-                                         ├─ heartbeats: hb/&lt;agent&gt; refs
-                                         └─ slots: plan · review · claim · execute
-                                               └─ agent CLI in a worktree
-                                                     └─ checks → push → stacked PR
-
- <span class="c-amb" data-i18n="architecture.sessionRepo">session repo</span> (join-code channel) ◄──► every device's skep
- <span class="c-amb" data-i18n="architecture.codeRepo">code repo</span> (branches, PRs)           ◄──► executing devices</pre>
-          </div>
-          <ul class="arch-points">
-            <li><strong data-i18n="architecture.point1.title">Deterministic code enforces the protocol.</strong> <span data-i18n="architecture.point1.body">Models only produce content: plans, reviews and code. Skep validates, authorize, sequence, test, sign and publish.</span></li>
-            <li><strong data-i18n="architecture.point2.title">No inbound connectivity (D18).</strong> <span data-i18n="architecture.point2.body">peers connect only to the session master. No mesh VPN or fixed IP is required.</span></li>
-            <li><strong data-i18n="architecture.point3.title">Human holds the gates.</strong> <span data-i18n="architecture.point3.body">You create tasks, approve plans, revoke leases, decide escalations and merge.</span></li>
-            <li><strong data-i18n="architecture.point4.title">Single-agent fast path by default.</strong> <span data-i18n="architecture.point4.body">Team mode with several items, peer review and stacked PRs only when the task needs it.</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features -->
-    <section class="section" id="features" class="reveal">
+    <section class="section" id="features">
       <div class="wrap">
-        <header class="section-head">
-          <p class="kicker mono" data-i18n="features.kicker">Features</p>
-          <h2 data-i18n="features.title">Built for agents that don't share a machine.</h2>
-        </header>
-        <div class="features">
-          <article class="card feature">
-            <svg class="fi" aria-hidden="true"><use href="#i-git"/></svg>
-            <h3 data-i18n="features.session.title">Signed session</h3>
-            <p data-i18n="features.session.body">Commits as event logs. Every task, plan, lease and delivery is an SSH-signed event, verified against each device's local <code>allowed_signers</code>. Forged or unsigned commits become no-ops and raise an alarm.</p>
-          </article>
-          <article class="card feature">
-            <svg class="fi" aria-hidden="true"><use href="#i-layers"/></svg>
-            <h3 data-i18n="features.execution.title">Dual-mode execution</h3>
-            <p data-i18n="features.execution.body">Use bare <code>skep</code> to open your local agent interactively. Use the <code>skep</code> daemon for background plan, review, claim and execute slots across devices.</p>
-          </article>
-          <article class="card feature">
-            <svg class="fi" aria-hidden="true"><use href="#i-term"/></svg>
-            <h3 data-i18n="features.session.title">In-memory session TUI</h3>
-            <p data-i18n="features.session.body">Start a session on your workstation, join from your laptop with a 12-digit code, and watch peers, items and agent state in <code>skep ui</code>.</p>
-          </article>
-          <article class="card feature">
-            <svg class="fi" aria-hidden="true"><use href="#i-key"/></svg>
-            <h3 data-i18n="features.credentials.title">D19 credential isolation</h3>
-            <p data-i18n="features.credentials.body">Zero secret sharing. Each device's agent CLI uses its own local login. Keys never touch git or the wire, not even as a hash or a label.</p>
-          </article>
-          <article class="card feature">
-            <svg class="fi" aria-hidden="true"><use href="#i-lock"/></svg>
-            <h3 data-i18n="features.leases.title">Epoch-fenced leases</h3>
-            <p data-i18n="features.leases.body">A claim bumps the work item's epoch, and every downstream event and branch is fenced by it. A laptop that wakes from sleep after its lease was revoked can never deliver stale work.</p>
-          </article>
-          <article class="card feature">
-            <svg class="fi" aria-hidden="true"><use href="#i-bolt"/></svg>
-            <h3 data-i18n="features.cli.title">Native CLI tooling</h3>
-            <p data-i18n="features.cli.body">A pure Node.js + TypeScript CLI with four runtime dependencies: <code>commander</code>, <code>zod</code>, <code>smol-toml</code> and <code>yaml</code>. It starts fast and stays small.</p>
-          </article>
+        <h2 data-i18n="feat.title">What's in v0.1.14</h2>
+        <div class="grid">
+          <article class="card reveal"><h3 data-i18n="feat.join.title">Slim join</h3><p data-i18n="feat.join.body">One line, <code>/join &lt;code&gt; &lt;ip:port&gt;</code>, from any repo checkout.</p></article>
+          <article class="card reveal"><h3 data-i18n="feat.orch.title">Orchestrator</h3><p data-i18n="feat.orch.body"><code>/orchestrate auto|confirm|off|new</code>. Default is auto.</p></article>
+          <article class="card reveal"><h3 data-i18n="feat.picker.title">Multi-peer picker</h3><p data-i18n="feat.picker.body">Choose which connected peers receive a piece of work.</p></article>
+          <article class="card reveal"><h3 data-i18n="feat.split.title">Split panels</h3><p data-i18n="feat.split.body">See peers side by side with <code>/layout split</code>.</p></article>
+          <article class="card reveal"><h3 data-i18n="feat.scroll.title">TUI scroll</h3><p data-i18n="feat.scroll.body">Scroll back through output without leaving the terminal UI.</p></article>
+          <article class="card reveal"><h3 data-i18n="feat.proto.title">Protocol v2</h3><p data-i18n="feat.proto.body">Output sharing is opt-in, summaries list changed files, and briefs go up to 8000.</p></article>
+          <article class="card reveal"><h3 data-i18n="feat.ui.title">Terminal or browser UI</h3><p data-i18n="feat.ui.body">Use <code>skep tui</code> in the terminal or <code>skep ui</code> in a browser.</p></article>
+          <article class="card reveal"><h3 data-i18n="feat.status.title">Session control</h3><p data-i18n="feat.status.body"><code>skep session start|join|intent|status</code> from the shell or scripts.</p></article>
         </div>
       </div>
     </section>
 
-    <!-- Security -->
-    <section class="section section-alt" id="security" class="reveal">
+    <section class="section" id="security">
       <div class="wrap">
-        <header class="section-head">
-          <p class="kicker mono" data-i18n="security.kicker">Security</p>
-          <h2 data-i18n="security.title">Security by architecture, not policy.</h2>
-        </header>
-        <div class="security">
-          <blockquote class="d19 card">
-            <p class="d19-label mono"><span class="pill pill-em" data-i18n="security.d19.title">Decision D19</span></p>
-            <p class="d19-quote" data-i18n="security.d19.quote">“Skep never transports, stores, syncs or brokers provider credentials, API keys or provider configurations between devices, in any form: not as plaintext, not as ciphertext, not as a hash, and not as a label.”</p>
-            <div class="d19-devices" aria-label="Each device uses its own credentials" data-i18n="security.devicesLabel" data-i18n-attr="aria-label">
-              <div class="dev"><span class="mono c-cyan">macbook</span><span class="mono dim" data-i18n="security.claudeLogin">claude · local login</span></div>
-              <div class="dev-link mono" aria-hidden="true"><span data-i18n="security.signedOnly">signed events only</span><br>⇄</div>
-              <div class="dev"><span class="mono c-cyan">devbox</span><span class="mono dim" data-i18n="security.codexLogin">codex · local login</span></div>
-            </div>
-          </blockquote>
-          <ul class="sec-points">
-            <li class="card">
-              <h3><svg class="i c-em" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="security.chain.title">SSH-signed event chain</span></h3>
-              <p data-i18n="security.chain.body">Every session commit is signed with an SSH key and checked against a trust root that each device installs locally. Fingerprints are compared out of band at <code>skep init</code>.</p>
-            </li>
-            <li class="card">
-              <h3><svg class="i c-em" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="security.noSync.title">Strict no-credential sync</span></h3>
-              <p data-i18n="security.d19.body">Other agent tools sync config and keys across devices. Skep explicitly forbids it. Machine A uses its Claude login and machine B uses its Codex login, and Skep never reads or records either.</p>
-            </li>
-            <li class="card">
-              <h3><svg class="i c-em" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="security.audit.title">Auditable history</span></h3>
-              <p data-i18n="security.audit.body">When an agent makes a mistake, <code>git log</code> on the session shows exactly which device, key and event made each step. The genesis commit is human-signed.</p>
-            </li>
-            <li class="card">
-              <h3><svg class="i c-em" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="security.control.title">No auto-merge, ever</span></h3>
-              <p data-i18n="security.control.body">Plan approval, lease revocation, escalation decisions and merges stay with you. In session mode the master gets a redacted summary, and the full transcript stays on the device that did the work.</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Quickstart -->
-    <section class="section" id="quickstart" class="reveal">
-      <div class="wrap">
-        <header class="section-head">
-          <p class="kicker mono" data-i18n="quickstart.kicker">Quickstart</p>
-          <h2 data-i18n="quickstart.title">Up and running in 60 seconds.</h2>
-          <p class="sub" data-i18n="quickstart.requirements">Needs Node.js ≥ 22.12, git ≥ 2.34, OpenSSH ≥ 8.9, and an agent CLI that is already logged in on each device.</p>
-        </header>
-
-        <div class="terminal qs" data-tabs>
-          <div class="term-bar">
-            <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="tabs" role="tablist" aria-label="Quickstart steps" data-i18n="quickstart.stepsLabel" data-i18n-attr="aria-label">
-              <button role="tab" id="qt-1" aria-controls="qp-1" aria-selected="true" tabindex="0" data-i18n="quickstart.tab.install">Install</button>
-              <button role="tab" id="qt-2" aria-controls="qp-2" aria-selected="false" tabindex="-1" data-i18n="quickstart.tab.local">Local Run</button>
-              <button role="tab" id="qt-3" aria-controls="qp-3" aria-selected="false" tabindex="-1" data-i18n="quickstart.tab.session">Session Mode</button>
-              <button role="tab" id="qt-4" aria-controls="qp-4" aria-selected="false" tabindex="-1" data-i18n="quickstart.tab.daemon">Daemon</button>
-            </div>
+        <div class="secure reveal">
+          <span class="badge mono" data-i18n="sec.badge">D19</span>
+          <div>
+            <h2 data-i18n="sec.title">Credentials never leave your device</h2>
+            <p data-i18n="sec.body">Each device runs its agent with its own login. Provider keys and tokens are never sent over the session, and a peer only shares output if you opt in.</p>
           </div>
-
-          <div class="term-body qs-panel" role="tabpanel" id="qp-1" aria-labelledby="qt-1" tabindex="0">
-            <button class="copy-btn copy-corner" type="button" data-copy-target="qc-1" aria-label="Copy commands" data-i18n="quickstart.copyLabel" data-i18n-attr="aria-label"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span data-i18n="btn.copy">Copy</span></button>
-<pre class="mono" id="qc-1"><span class="c-mut"># 1. Install globally (bins: skep, skep)</span>
-npm install -g @skepagent/skep</pre>
-          </div>
-          <div class="term-body qs-panel" role="tabpanel" id="qp-2" aria-labelledby="qt-2" tabindex="0" hidden>
-            <button class="copy-btn copy-corner" type="button" data-copy-target="qc-2" aria-label="Copy commands" data-i18n="quickstart.copyLabel" data-i18n-attr="aria-label"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span data-i18n="btn.copy">Copy</span></button>
-<pre class="mono" id="qc-2"><span class="c-mut"># 2. Launch your local agent (claude, else codex, else pi)</span>
-skep
-<span class="c-mut"># or pick one explicitly</span>
-skep tui --agent codex</pre>
-          </div>
-          <div class="term-body qs-panel" role="tabpanel" id="qp-3" aria-labelledby="qt-3" tabindex="0" hidden>
-            <button class="copy-btn copy-corner" type="button" data-copy-target="qc-3" aria-label="Copy commands" data-i18n="quickstart.copyLabel" data-i18n-attr="aria-label"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span data-i18n="btn.copy">Copy</span></button>
-<pre class="mono" id="qc-3"><span class="c-mut"># 3. Start a multi-device live session (prints a join code)</span>
-skep session start
-skep ui
-
-<span class="c-mut"># 4. Join from a second device on the same network</span>
-skep session join --code &lt;join-code&gt; --host &lt;master-ip&gt;:7419 --ui
-
-<span class="c-mut"># send work to the session</span>
-skep session intent "what should be done"</pre>
-          </div>
-          <div class="term-body qs-panel" role="tabpanel" id="qp-4" aria-labelledby="qt-4" tabindex="0" hidden>
-            <button class="copy-btn copy-corner" type="button" data-copy-target="qc-4" aria-label="Copy commands" data-i18n="quickstart.copyLabel" data-i18n-attr="aria-label"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span data-i18n="btn.copy">Copy</span></button>
-<pre class="mono" id="qc-4"><span class="c-mut"># 5. session mode: one empty private git repo + skep on every device</span>
-skep init                 <span class="c-mut"># per device: daemon key + allowed_signers line</span>
-skep init --genesis --human-key &lt;path&gt;   <span class="c-mut"># controller only, once</span>
-skep                     <span class="c-mut"># run as a service (systemd / launchd)</span>
-skep doctor
-
-skep task new "…" --repo &lt;allowlist-name&gt; --owner &lt;agent&gt;
-skep plan approve &lt;task&gt;
-skep status</pre>
-          </div>
-        </div>
-        <p class="fineprint qs-note" data-i18n="quickstart.note">Full trust setup, revoke and re-genesis steps are in the <a href="https://github.com/Guxiaodong941005/skepAgent/blob/main/docs/RUNBOOK.md" rel="noopener" data-i18n="quickstart.runbookLink">runbook</a>.</p>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section cta">
-      <div class="grid-bg grid-bg-cta" aria-hidden="true"></div>
-      <div class="wrap cta-inner">
-        <h2 data-i18n="cta.title">Ready to coordinate your AI coding swarm?</h2>
-        <p class="sub" data-i18n="cta.body">Skep is free, MIT-licensed and early. Expect breaking changes while it is 0.x, and send feedback through GitHub.</p>
-        <div class="cta-row cta-center">
-          <a class="btn btn-primary" href="https://www.npmjs.com/package/@skepagent/skep" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-npm"/></svg><span data-i18n="cta.npm">Install via npm (@skepagent/skep)</span></a>
-          <a class="btn btn-secondary" href="https://github.com/Guxiaodong941005/skepAgent#readme" rel="noopener"><span data-i18n="cta.docs">Read the documentation on GitHub</span> <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -442,49 +251,14 @@ skep status</pre>
 
   <footer class="footer">
     <div class="wrap footer-inner">
-      <div>
-        <a class="brand" href="#top"><svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><use href="#logo"/></svg><span class="brand-name">skep</span></a>
-        <p class="fineprint" data-i18n="footer.copyright">© 2026 Skep Contributors. Open source under the <a href="https://github.com/Guxiaodong941005/skepAgent/blob/main/LICENSE" rel="noopener" data-i18n="footer.license">MIT License</a>.</p>
-      </div>
-      <nav class="footer-links" aria-label="Project links" data-i18n="footer.linksLabel" data-i18n-attr="aria-label">
-        <a href="https://www.npmjs.com/package/@skepagent/skep" rel="noopener" data-i18n="footer.npm">npm</a>
-        <a href="https://github.com/Guxiaodong941005/skepAgent" rel="noopener" data-i18n="footer.repository">GitHub Repository</a>
-        <a href="https://github.com/Guxiaodong941005/skepAgent/issues" rel="noopener" data-i18n="footer.issues">Issues</a>
-        <a href="https://github.com/Guxiaodong941005/skepAgent/releases" rel="noopener" data-i18n="footer.releases">Releases</a>
-        <a href="https://github.com/Guxiaodong941005/skepAgent#readme" rel="noopener" data-i18n="footer.documentation">Documentation</a>
+      <span class="mono">skep v0.1.14 · MIT</span>
+      <nav class="foot-links">
+        <a href="https://github.com/Guxiaodong941005/skepAgent" target="_blank" rel="noopener noreferrer" data-i18n="nav.github">GitHub</a>
+        <a href="https://www.npmjs.com/package/@skepagent/skep" target="_blank" rel="noopener noreferrer">npm</a>
       </nav>
-      <p class="privacy mono"><svg class="i i-xs c-em" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="footer.privacy">No cookies. No trackers. Static on Cloudflare Pages.</span></p>
     </div>
   </footer>
 
-  <div class="toast" role="status" aria-live="polite" data-toast></div>
-
-  <!-- Icon sprite -->
-  <svg class="sprite" width="0" height="0" aria-hidden="true">
-    <symbol id="logo" viewBox="0 0 32 32">
-      <path d="M16 2 28.1 9v14L16 30 3.9 23V9z" fill="none" stroke="#06B6D4" stroke-width="2"/>
-      <path d="M16 9.5 21.6 12.75v6.5L16 22.5l-5.6-3.25v-6.5z" fill="#06B6D4" opacity=".9"/>
-    </symbol>
-    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
-    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
-    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
-    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a10.9 10.9 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></symbol>
-    <symbol id="i-npm" viewBox="0 0 24 24" fill="currentColor"><path d="M2 7h20v9h-10v1.5H8V16H2zm1.5 1.5v6h3v-4.5H8v4.5h1.5v-6zm7 0v7.5h3V14.5h3v-6zm3 1.5h1.5v3H13.5zm4-1.5v6h1.5v-4.5h1.5v4.5H22v-6z"/></symbol>
-    <symbol id="i-git" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 7v10M6 12h3a6 6 0 0 0 7 0"/></symbol>
-    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
-    <symbol id="i-term" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="16" rx="2"/><path d="m7 9 3 3-3 3M12.5 15H17"/></symbol>
-    <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3M15 8l2 2"/></symbol>
-    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
-    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
-    <symbol id="i-merge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="15" r="2"/><path d="M6 7v10M6 7a8 8 0 0 0 10 7"/></symbol>
-    <symbol id="i-bee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="15" rx="4" ry="5.5"/><path d="M8.4 13.5h7.2M8.4 16.8h7.2"/><path d="M9.5 10.5C6 10 3.5 8 4.5 6.2 5.6 4.5 8.6 6.4 10.2 9.6M14.5 10.5C18 10 20.5 8 19.5 6.2 18.4 4.5 15.4 6.4 13.8 9.6"/><path d="M11 9.6 9.8 6.8M13 9.6l1.2-2.8"/></symbol>
-    <symbol id="i-hive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20.5V13a7 7 0 0 1 14 0v7.5z"/><path d="M5.6 10.5c4.2 1.2 8.6 1.2 12.8 0M5 14.5c4.6 1.2 9.4 1.2 14 0"/><path d="M10 20.5v-1.5a2 2 0 0 1 4 0v1.5"/></symbol>
-    <symbol id="i-human" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20.5a7 7 0 0 1 14 0"/></symbol>
-    <symbol id="i-signed-log" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="3" width="15" height="18" rx="2"/><path d="M8 7.5h8M8 11h8M8 14.5h3.5"/><path d="m13 16.8 1.8 1.7 3.2-3.5"/></symbol>
-    <symbol id="i-laptop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="5" width="15" height="10" rx="1.5"/><path d="M2.5 19h19"/></symbol>
-    <symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="7" rx="1.5"/><rect x="3.5" y="13" width="17" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
-    <symbol id="i-hive-comb" viewBox="0 0 160 100" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"><path d="M20 4 34 12 34 28 20 36 6 28 6 12Z" transform="translate(96 2)"/><path d="M20 4 34 12 34 28 20 36 6 28 6 12Z" transform="translate(122 20)"/><path d="M20 4 34 12 34 28 20 36 6 28 6 12Z" transform="translate(66 22)"/><path d="M20 4 34 12 34 28 20 36 6 28 6 12Z" transform="translate(110 54)"/><path d="M20 4 34 12 34 28 20 36 6 28 6 12Z" transform="translate(40 6)"/></symbol>
-  </svg>
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
 </body>
 </html>
