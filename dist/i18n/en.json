@@ -17,7 +17,7 @@
   "btn.copy": "Copy",
   "hero.start": "Start in 3 steps",
   "hero.npm": "View on npm",
-  "hero.fineprint": "MIT · Node.js ≥ 22.12 · macOS & Linux · bin: {0}",
+  "hero.fineprint": "Apache-2.0 · Node.js ≥ 22.12 · macOS & Linux · bin: {0}",
   "demo.title": "One master, many peers",
   "demo.sub": "Start a session, peers join with a code, and work flows between devices.",
   "demo.modeLabel": "/orchestrate",

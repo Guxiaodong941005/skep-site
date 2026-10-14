@@ -17,7 +17,7 @@
   "btn.copy": "复制",
   "hero.start": "三步开始",
   "hero.npm": "在 npm 上查看",
-  "hero.fineprint": "MIT · Node.js ≥ 22.12 · macOS 和 Linux · 可执行命令：{0}",
+  "hero.fineprint": "Apache-2.0 · Node.js ≥ 22.12 · macOS 和 Linux · 可执行命令：{0}",
   "demo.title": "一台主控设备，多台协作设备",
   "demo.sub": "开启会话，协作设备通过加入码接入，让任务在设备间流转。",
   "demo.modeLabel": "/orchestrate",
