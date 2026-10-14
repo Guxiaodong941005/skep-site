@@ -1,6 +1,6 @@
 # skep-site
 
-Marketing site for [skepagent.com](https://skepagent.com), for `@skepagent/skep` v0.1.1.
+Marketing site for [skepagent.com](https://skepagent.com), for `@skepagent/skep` v0.1.15.
 
 Zero-build static site: everything served lives in `dist/`, hand-written (no bundler, no framework,
 no analytics, no backend).
@@ -28,7 +28,7 @@ Preview locally:
 npx wrangler pages dev dist      # or: python3 -m http.server -d dist 8080
 ```
 
-Product facts on the page were checked against the published `@skepagent/skep@0.1.1` tarball (CLI
+Product facts on the page were checked against the published `@skepagent/skep@0.1.15` tarball (CLI
 flags, event names, README, CHANGELOG). Where DESIGN.md's sample commands didn't match the real CLI,
 the page follows the CLI:
 
